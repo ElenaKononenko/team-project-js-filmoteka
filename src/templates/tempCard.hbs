@@ -1,0 +1,20 @@
+
+{{#each this}}
+ <li class="gallery__item">
+    <img class="gallery__item__picture"
+         src={{poster_path}}
+         alt={{overview}}
+     />
+     <h2 class="gallery__item__title">{{title}}</h2>
+
+     <p class="gallery__item__description">
+          {{genres[name]}}
+           <span class="gallery__item__description__decor">|</span>
+           <span class="gallery__item__movie__description__year">
+            {{first_air_date.substring(0, 4)}}</span>
+           <span class="gallery__item__description__rating">
+           </span>{{vote_average}}</span>
+     </p>
+</li>
+
+{{/each}}
