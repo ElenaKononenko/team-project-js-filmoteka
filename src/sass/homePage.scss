@@ -1,0 +1,130 @@
+body {
+  background-color: #fff;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+/* text  */
+.gallery__item__title {
+  /* line-height: 1.33; */
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.gallery__item__description {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #ff6b01;
+}
+.gallery__item__description__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  background-color: #ff6b01;
+  color: white;
+  margin-left: 10px;
+}
+.gallery__item__description__decor {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery__item__picture {
+  display: block;
+  width: 100%;
+  height: 398px;
+  border-radius: 5px;
+  background-color: rgb(231, 220, 220);
+}
+
+.container {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+@media (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 76px;
+    padding-right: 76px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 1024px;
+    padding-left: 71px;
+    padding-right: 71px;
+  }
+}
+
+.section {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+@media (min-width: 768px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery__item:not(:first-child) {
+    margin-top: 20px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gallery__item {
+    width: calc((100% - 30px) / 2);
+  }
+
+  .gallery__item:not(:nth-child(2n)) {
+    margin-right: 30px;
+  }
+  .gallery__item:nth-child(n + 3) {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery__item {
+    width: calc((100% - 60px) / 3);
+  }
+
+  .gallery__item:not(:nth-child(3n + 3)) {
+    margin-right: 30px;
+  }
+  .gallery__item:nth-child(n + 4) {
+    margin-top: 30px;
+  }
+}
