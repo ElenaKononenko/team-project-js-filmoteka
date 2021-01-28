@@ -1,7 +1,7 @@
 {
   "name": "gulp-starter-kit",
   "version": "1.2.0",
-  "description": "",
+  "description": "![Banner](./banner.png)",
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=1234 gulp start --development ",
