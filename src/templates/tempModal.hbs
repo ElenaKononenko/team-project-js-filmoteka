@@ -1,0 +1,25 @@
+{{#each this}}
+ <li class="gallery__item">
+    <img class="gallery__item__picture"
+         src={{poster_path}}
+         alt={{overview}}
+     />
+     <h2 class="gallery__item__title">{{title}}</h2>
+
+<p class="votes">Vote / Votes</p>
+<span class="gallery__item__description__rating">
+     {{vote_average}}</span>
+<span class="gallery__item__description__decor">/ </span>
+<span class="gallery__item__description__rating">
+     {{vote_count}}</span>
+<p class="votes">Popularity</p>
+{{popularity}}
+<p class="votes">Original Title</p>
+{{original_title}}
+<p class="gallery__item__description">
+{{genres[name]}}
+<h3 class="about">ABOUT</h3>
+{{overview}}
+</li>
+
+{{/each}}
