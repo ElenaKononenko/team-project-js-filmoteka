@@ -1,0 +1,46 @@
+.header_section {
+  background: rgba(0, 0, 0, 0.56);
+}
+
+.header-container {
+  height: 230px;
+  display: block;
+}
+
+.navigation {
+  padding-top: 41px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.header_link {
+  display: flex;
+}
+
+.header_item {
+  list-style: none;
+  text-decoration: none;
+}
+
+.header_list {
+  justify-content: flex-end;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  text-decoration: none;
+}
+
+.head {
+  margin-right: 39px;
+}
