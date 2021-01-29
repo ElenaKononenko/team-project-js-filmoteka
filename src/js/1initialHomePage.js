@@ -56,6 +56,7 @@ function createCardFunc(imgPath, filmTitle, genre, date, voteAverage, movieId) {
   });
   return listItem;
 }
+
 function fetchPopularMoviesList() {
   let url = `https://api.themoviedb.org/3/trending/${MEDIA_TYPE}/${TIME_WINDOW}?api_key=${API_KEY}&page=${pageNumber}`;
 
