@@ -30,9 +30,6 @@ backBtn.classList.add('btnHide');
 let currentPageNumber = document.querySelector('#js-currentPageNumber');
 
 function plaginationNavigation(e) {
-  pageNumber === 1 || pageNumber < 1
-    ? backBtn.classList.add('btnHide')
-    : backBtn.classList.remove('btnHide');
   if (e.target.id === 'js-backBtn') {
     pageNumber = pageNumber - 1;
     currentPageNumber.textContent = pageNumber;
