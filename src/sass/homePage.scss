@@ -127,3 +127,47 @@ body {
     margin-top: 30px;
   }
 }
+
+
+.plaginationContainer {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentPageNumber {
+  width: 40px;
+  background-color: #ff6b08;
+  padding: 12px;
+  margin-right: 16px;
+  margin-left: 16px;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.backBtn,
+.nextBtn {
+  height: 40px;
+  padding: 12px;
+  border: 0;
+  outline: 0;
+  background: #f7f7f7;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.backBtn:hover,
+.nextBtn:hover {
+  background-color: #ff6b08;
+}
+
+.btnHide {
+  display: none;
+}
+
