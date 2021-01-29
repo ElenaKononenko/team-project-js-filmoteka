@@ -3,7 +3,6 @@
 // const MEDIA_TYPE = 'movie';
 // const TIME_WINDOW = 'week';
 
-
 // let inputValue = '';
 // let pageNumber = 1;
 
