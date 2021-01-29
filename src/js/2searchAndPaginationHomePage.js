@@ -7,10 +7,10 @@ const inputValue = '';
 
 function fetchFilms() {
   let url = '';
-  if(inputValue == '') {
+  if (inputValue == '') {
     url = `https://api.themoviedb.org/3/trending/${MEDIA_TYPE}/${TIME_WINDOW}?api_key=${API_KEY}`;
-  }else{
-    url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`
+  } else {
+    url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
   }
   return fetch(url)
     .then(res => res.json())
