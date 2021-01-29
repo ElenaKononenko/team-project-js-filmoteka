@@ -2,9 +2,8 @@
 // const API_KEY = 'd407875648143dbc537f3d16fab2b882';
 // const MEDIA_TYPE = 'movie';
 // const TIME_WINDOW = 'week';
-const backBtn = document.querySelector('#js-backBtn');
-const nextBtn = document.querySelector('#js-nextBtn');
-let plaginationPageNumber = document.querySelector('#js-plaginationPageNumber');
+
+
 // let inputValue = '';
 // let pageNumber = 1;
 
