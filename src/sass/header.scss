@@ -97,6 +97,11 @@
   }
 }
 
+.img-logo {
+  vertical-align: middle;
+  padding-bottom: 6px;
+}
+
 .head {
   margin-right: 39px;
 }
@@ -132,4 +137,8 @@ input[type='search'] {
   font-size: 14px;
   line-height: 16px;
   outline: none;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
 }
