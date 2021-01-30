@@ -42,29 +42,31 @@ function fetchFilms() {
     });
 }
 
+//CREATE FUNCTION TO CHECK INPUT
+
+function checkInput(){
+  if (inputValue === '') {
+    fetchPopularMoviesList();
+  } else {
+    fetchFilms();
+  }
+}
+
 function searchFilms(event) {
   event.preventDefault();
   inputValue = event.currentTarget.search.value;
-  fetchFilms();
+  checkInput()
 }
 
 function plaginationNavigation(e) {
   if (e.target.id === 'js-backBtn') {
     pageNumber = pageNumber - 1;
     currentPageNumber.textContent = pageNumber;
-    if (inputValue === '') {
-      fetchPopularMoviesList();
-    } else {
-      fetchFilms();
-    }
+    checkInput()
   } else {
     pageNumber = pageNumber + 1;
     currentPageNumber.textContent = pageNumber;
-    if (inputValue === '') {
-      fetchPopularMoviesList();
-    } else {
-      fetchFilms();
-    }
+    checkInput()
   }
   pageNumber === 1 || pageNumber < 1
     ? refs.backBtn.classList.add('btnIsHidden')
