@@ -1,3 +1,10 @@
+const refs = {
+  searchForms: document.querySelector('#search-form')
+};
+// console.log(refs.searchForms);
+
+let sForm = refs.searchForms.addEventListener('input', searchFilms);
+
 function fetchFilms() {
   let url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
 
@@ -26,12 +33,12 @@ function fetchFilms() {
     });
 }
 
-function searchFilms() {
-  inputValue = 'live';
+function searchFilms(event) {
+  inputValue = event.target.value;
   fetchFilms();
 }
 
-searchFilms();
+// searchFilms();
 
 const backBtn = document.querySelector('#js-backBtn');
 const nextBtn = document.querySelector('#js-nextBtn');
