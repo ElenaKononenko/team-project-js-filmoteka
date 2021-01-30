@@ -1,9 +1,18 @@
 const refs = {
-  searchForms: document.querySelector('#search-form')
+  searchForms: document.getElementById('js-search-form'),
+  backBtn: document.getElementById('js-backBtn'),
+  nextBtn: document.getElementById('js-nextBtn'),
 };
-// console.log(refs.searchForms);
 
-refs.searchForms.addEventListener('input', searchFilms);
+let currentPageNumber = document.getElementById('js-currentPageNumber');
+
+refs.searchForms.addEventListener('submit', searchFilms);
+refs.backBtn.addEventListener('click', plaginationNavigation);
+refs.nextBtn.addEventListener('click', plaginationNavigation);
+
+if (pageNumber === 1) {
+  refs.backBtn.classList.add('btnIsHidden');
+}
 
 function fetchFilms() {
   let url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
@@ -15,7 +24,7 @@ function fetchFilms() {
       list.innerHTML = '';
       const cardsFragment = document.createDocumentFragment();
       renderFilms.map(el => {
-          cardsFragment.appendChild(
+        cardsFragment.appendChild(
           createCardFunc(
             el.poster_path,
             el.title,
@@ -34,16 +43,10 @@ function fetchFilms() {
 }
 
 function searchFilms(event) {
-  inputValue = event.target.value;
+  event.preventDefault();
+  inputValue = event.currentTarget.search.value;
   fetchFilms();
 }
-
-// searchFilms();
-
-const backBtn = document.querySelector('#js-backBtn');
-const nextBtn = document.querySelector('#js-nextBtn');
-backBtn.classList.add('btnHide');
-let currentPageNumber = document.querySelector('#js-currentPageNumber');
 
 function plaginationNavigation(e) {
   if (e.target.id === 'js-backBtn') {
@@ -64,9 +67,6 @@ function plaginationNavigation(e) {
     }
   }
   pageNumber === 1 || pageNumber < 1
-    ? backBtn.classList.add('btnHide')
-    : backBtn.classList.remove('btnHide');
+    ? refs.backBtn.classList.add('btnIsHidden')
+    : refs.backBtn.classList.remove('btnIsHidden');
 }
-
-backBtn.addEventListener('click', plaginationNavigation);
-nextBtn.addEventListener('click', plaginationNavigation);
