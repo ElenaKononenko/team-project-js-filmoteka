@@ -58,8 +58,6 @@ function searchFilms(event) {
   checkInput()
 }
 
-// searchFilms();
-
 function plaginationNavigation(e) {
   if (e.target.id === 'js-backBtn') {
     pageNumber = pageNumber - 1;
