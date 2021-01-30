@@ -5,9 +5,8 @@ const refs = {
 };
 
 let currentPageNumber = document.getElementById('js-currentPageNumber');
-// console.log(refs.searchForms);
 
-refs.searchForms.addEventListener('input', searchFilms);
+refs.searchForms.addEventListener('submit', searchFilms);
 refs.backBtn.addEventListener('click', plaginationNavigation);
 refs.nextBtn.addEventListener('click', plaginationNavigation);
 
@@ -44,7 +43,8 @@ function fetchFilms() {
 }
 
 function searchFilms(event) {
-  inputValue = event.target.value;
+  event.preventDefault();
+  inputValue = event.currentTarget.search.value;
   fetchFilms();
 }
 
