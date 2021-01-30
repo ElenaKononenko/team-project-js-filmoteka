@@ -2,6 +2,7 @@ const refs = {
   searchForms: document.getElementById('js-search-form'),
   backBtn: document.getElementById('js-backBtn'),
   nextBtn: document.getElementById('js-nextBtn'),
+  error: document.getElementById('js-error'),
 };
 
 let currentPageNumber = document.getElementById('js-currentPageNumber');
@@ -22,6 +23,10 @@ function fetchFilms() {
     .then(data => {
       renderFilms = data.results;
       list.innerHTML = '';
+      if (renderFilms.length === 0) {
+        refs.error.textContent =
+          'Search result not successful. Enter the correct movie name and try again.';
+      }
       const cardsFragment = document.createDocumentFragment();
       renderFilms.map(el => {
         cardsFragment.appendChild(
