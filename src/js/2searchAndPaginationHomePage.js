@@ -26,6 +26,7 @@ function fetchFilms() {
       if (renderFilms.length === 0) {
         refs.error.textContent =
           'Search result not successful. Enter the correct movie name and try again.';
+        fetchPopularMoviesList();
       }
       const cardsFragment = document.createDocumentFragment();
       renderFilms.map(el => {
