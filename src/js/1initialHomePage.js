@@ -64,6 +64,7 @@ function fetchPopularMoviesList() {
     .then(res => res.json())
     .then(data => {
       renderFilms = data.results;
+      list.innerHTML = '';
       const cardsFragment = document.createDocumentFragment();
 
       renderFilms.map(el => {

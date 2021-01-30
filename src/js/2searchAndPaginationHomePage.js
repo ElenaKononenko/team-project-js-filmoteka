@@ -1,58 +1,74 @@
-// const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
-// const API_KEY = 'd407875648143dbc537f3d16fab2b882';
-// const MEDIA_TYPE = 'movie';
-// const TIME_WINDOW = 'week';
+const refs = {
+  searchForms: document.getElementById('js-search-form'),
+  backBtn: document.getElementById('js-backBtn'),
+  nextBtn: document.getElementById('js-nextBtn'),
+};
 
-// let inputValue = '';
-// let pageNumber = 1;
+let currentPageNumber = document.getElementById('js-currentPageNumber');
 
-// function fetchFilms() {
-//   let url = '';
-//   if (inputValue == '') {
-//     url = `https://api.themoviedb.org/3/trending/${MEDIA_TYPE}/${TIME_WINDOW}?api_key=${API_KEY}`;
-//   } else {
-//     url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
-//   }
-//   return fetch(url)
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log(data.results);
-//       return data.results;
-//     });
-// }
+refs.searchForms.addEventListener('submit', searchFilms);
+refs.backBtn.addEventListener('click', plaginationNavigation);
+refs.nextBtn.addEventListener('click', plaginationNavigation);
 
-// fetchFilms(inputValue);
+if (pageNumber === 1) {
+  refs.backBtn.classList.add('btnIsHidden');
+}
 
-const backBtn = document.querySelector('#js-backBtn');
-const nextBtn = document.querySelector('#js-nextBtn');
-backBtn.classList.add('btnHide');
-let currentPageNumber = document.querySelector('#js-currentPageNumber');
+function fetchFilms() {
+  let url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
+
+  return fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      renderFilms = data.results;
+      list.innerHTML = '';
+      const cardsFragment = document.createDocumentFragment();
+      renderFilms.map(el => {
+        cardsFragment.appendChild(
+          createCardFunc(
+            el.poster_path,
+            el.title,
+            el.genre_ids,
+            el.release_date,
+            el.vote_average,
+            el.id,
+          ),
+        );
+      });
+      list.appendChild(cardsFragment);
+    })
+    .catch(Error => {
+      console.log(Error);
+    });
+}
+
+//CREATE FUNCTION TO CHECK INPUT
+
+function checkInput(){
+  if (inputValue === '') {
+    fetchPopularMoviesList();
+  } else {
+    fetchFilms();
+  }
+}
+
+function searchFilms(event) {
+  event.preventDefault();
+  inputValue = event.currentTarget.search.value;
+  checkInput()
+}
 
 function plaginationNavigation(e) {
-  pageNumber === 1 || pageNumber < 1
-    ? backBtn.classList.add('btnHide')
-    : backBtn.classList.remove('btnHide');
   if (e.target.id === 'js-backBtn') {
     pageNumber = pageNumber - 1;
     currentPageNumber.textContent = pageNumber;
-    if (inputValue === '') {
-      fetchPopularMoviesList();
-    } else {
-      fetchFilms();
-    }
+    checkInput()
   } else {
     pageNumber = pageNumber + 1;
     currentPageNumber.textContent = pageNumber;
-    if (inputValue === '') {
-      fetchPopularMoviesList();
-    } else {
-      fetchFilms();
-    }
+    checkInput()
   }
   pageNumber === 1 || pageNumber < 1
-    ? backBtn.classList.add('btnHide')
-    : backBtn.classList.remove('btnHide');
+    ? refs.backBtn.classList.add('btnIsHidden')
+    : refs.backBtn.classList.remove('btnIsHidden');
 }
-
-backBtn.addEventListener('click', plaginationNavigation);
-nextBtn.addEventListener('click', plaginationNavigation);

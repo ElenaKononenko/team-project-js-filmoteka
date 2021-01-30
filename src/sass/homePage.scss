@@ -6,6 +6,7 @@
   margin-top: 10px;
   margin-bottom: 0;
   text-transform: uppercase;
+  padding: 0 5px 0px 5px;
 }
 
 .gallery__item__description {
@@ -15,6 +16,7 @@
   margin-top: 0;
   margin-bottom: 0;
   color: #ff6b01;
+  padding: 0 5px 5px 5px;
 }
 .gallery__item__description__rating {
   display: flex;
@@ -45,6 +47,15 @@
     display: flex;
     flex-wrap: wrap;
   }
+}
+
+.gallery__item {
+  border-radius: 5px;
+}
+.gallery__item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 28px rgba(160, 152, 152, 0.25),
+    0 10px 10px rgba(160, 152, 152, 0.25);
 }
 
 @media (max-width: 767px) {
@@ -116,6 +127,6 @@
   background-color: #ff6b08;
 }
 
-.btnHide {
+.btnIsHidden {
   display: none;
 }
