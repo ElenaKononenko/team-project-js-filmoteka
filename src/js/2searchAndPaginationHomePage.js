@@ -3,7 +3,7 @@ const refs = {
 };
 // console.log(refs.searchForms);
 
-let sForm = refs.searchForms.addEventListener('input', searchFilms);
+refs.searchForms.addEventListener('input', searchFilms);
 
 function fetchFilms() {
   let url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
