@@ -5,6 +5,7 @@ const refs = {
   error: document.getElementById('js-error'),
 };
 
+refs.error.textContent = '';
 let currentPageNumber = document.getElementById('js-currentPageNumber');
 
 refs.searchForms.addEventListener('submit', searchFilms);
@@ -60,6 +61,7 @@ function checkInput(){
 
 function searchFilms(event) {
   event.preventDefault();
+  refs.error.textContent = '';
   inputValue = event.currentTarget.search.value;
   checkInput()
 }
