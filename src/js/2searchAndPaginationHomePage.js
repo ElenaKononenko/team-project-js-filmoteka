@@ -8,6 +8,7 @@ const refs = {
 refs.error.textContent = '';
 let currentPageNumber = document.getElementById('js-currentPageNumber');
 
+refs.searchForms.addEventListener('input', resetErrors);
 refs.searchForms.addEventListener('submit', searchFilms);
 refs.backBtn.addEventListener('click', plaginationNavigation);
 refs.nextBtn.addEventListener('click', plaginationNavigation);
@@ -21,6 +22,11 @@ function errorContent() {
     'Search result not successful. Enter the correct movie name and try again.';
   fetchPopularMoviesList();
 }
+
+function resetErrors() {
+  refs.error.textContent = '';
+  fetchPopularMoviesList();
+};
 
 function fetchFilms() {
   let url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
@@ -59,7 +65,7 @@ function fetchFilms() {
 
 function checkInput(){
   if (inputValue === '') {
-    fetchPopularMoviesList();
+    resetErrors();
   } else {
     fetchFilms();
   }
