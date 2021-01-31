@@ -16,41 +16,7 @@ fetchGenres();
 fetchPopularMoviesList();
 
 function createCardFunc(imgPath, filmTitle, genre, date, voteAverage, movieId) {
-  const listItem = document.createElement('li');
-  listItem.classList.add('gallery__item');
-
-  let genreString = genre
-    .slice(0, 3)
-    .reduce((acc, el, index) => {
-      if (index === 2 && genre.length > 3) {
-        return acc + 'Other' + ', ';
-      }
-      return (
-        acc +
-        (genres.find(elem => {
-          return elem.id === el;
-        }).name || 'Other') +
-        ', '
-      );
-    }, '')
-    .slice(0, -2);
-
-  const temp = `<img class="gallery__item__picture"
-                    src='${basicPosterUrl}${imgPath}'
-                    alt=${filmTitle}
-                    />
-                <h2 class="gallery__item__title">${filmTitle}</h2>
-
-                <p class="gallery__item__description">
-                    ${genreString}
-                    <span class="gallery__item__description__decor">|</span>
-                    <span class="gallery__item__description__year">
-                        ${date.substring(0, 4)}</span>
-                    <span class="gallery__item__description__rating">
-                    ${voteAverage}</span>
-                </p>
-                `;
-  listItem.insertAdjacentHTML('afterbegin', temp);
+  const listItem = cardTemplate(imgPath, filmTitle, genre, date, voteAverage);
   listItem.addEventListener('click', () => {
     activeDetailsPage(movieId, false);
   });
@@ -66,12 +32,11 @@ function fetchPopularMoviesList() {
       renderFilms = data.results;
       list.innerHTML = '';
       const cardsFragment = document.createDocumentFragment();
-
       renderFilms.map(el => {
         cardsFragment.appendChild(
           createCardFunc(
             el.poster_path,
-            el.title,
+            el.title || el.original_title,
             el.genre_ids,
             el.release_date,
             el.vote_average,
@@ -95,4 +60,55 @@ function fetchGenres() {
       genres = result.genres;
       return result.genres;
     });
+}
+
+function genreString(genre) {
+  if (genre.length === 0) {
+    return 'Other';
+  }
+  return genre
+    .slice(0, 3)
+    .reduce((acc, el, index) => {
+      if (index === 2 && genre.length > 3) {
+        return acc + 'Other' + ', ';
+      }
+      return (
+        acc +
+        (genres.find(elem => {
+          return elem.id === el;
+        }).name || 'Other') +
+        ', '
+      );
+    }, '')
+    .slice(0, -2);
+}
+
+function cardTemplate(imgPath, filmTitle, genre, date, voteAverage) {
+  const result = document.createElement('li');
+  result.classList.add('gallery__item');
+  let poster = '../images/noPoster.jpg';
+  if (imgPath) {
+    poster = basicPosterUrl + imgPath;
+  }
+
+  let temp = `<img class="gallery__item__picture"
+                    src='${poster}'
+                    alt=${filmTitle}
+                    />
+                <h2 class="gallery__item__title">${filmTitle}</h2>
+
+                <p class="gallery__item__description">
+                    ${genreString(genre)}`;
+  if (date.length >= 4) {
+    temp += `<span class="gallery__item__description__decor">|</span>
+             <span class="gallery__item__description__year">${date.substring(
+               0,
+               4,
+             )}</span>`;
+  }
+  temp += `<span class="gallery__item__description__rating">
+            ${voteAverage}</span>
+            </p> `;
+  result.insertAdjacentHTML('afterbegin', temp);
+  return result;
 }

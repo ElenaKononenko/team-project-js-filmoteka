@@ -29,6 +29,7 @@ function fetchFilms() {
     .then(res => res.json())
     .then(data => {
       renderFilms = data.results;
+      console.log(renderFilms);
       list.innerHTML = '';
       if (renderFilms.length === 0) {
         errorContent();
@@ -38,7 +39,7 @@ function fetchFilms() {
         cardsFragment.appendChild(
           createCardFunc(
             el.poster_path,
-            el.title,
+            el.title || el.original_title,
             el.genre_ids,
             el.release_date,
             el.vote_average,
