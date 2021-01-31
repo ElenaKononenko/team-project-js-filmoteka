@@ -1,8 +1,5 @@
 console.log('Hello from 3navigation');
-
-const gallery = document.querySelector('.galleryHome list');
 const backDropRef = document.querySelector('.js-modal');
-const itemCard = document.querySelector('.gallery__item');
 const overlayRef = document.querySelector('.overlay');
 
 showDetails();
@@ -22,22 +19,6 @@ function showDetails(
   const modalWindow = document.createElement('div');
   modalWindow.classList.add('modalCard is-hidden');
 
-  let genreString = genre
-    .slice(0, 3)
-    .reduce((acc, el, index) => {
-      if (index === 2 && genre.length > 3) {
-        return acc + 'Other' + ', ';
-      }
-      return (
-        acc +
-        (genres.find(elem => {
-          return elem.id === el;
-        }).name || 'Other') +
-        ', '
-      );
-    }, '')
-    .slice(0, -2);
-
   const modalCardinfo = `<img class="gallery__item__picture"
                     src='${basicPosterUrl}${imgPath}'
                     alt=${filmTitle}
@@ -50,7 +31,7 @@ function showDetails(
         <h2 class="about">ABOUT</h2>
         <p class="votes about">${description}</p>`;
 
-  listItem.insertAdjacentHTML('afterbegin', modalCardinfo);
+  modalWindow.insertAdjacentHTML('afterbegin', modalCardinfo);
   return modalWindow;
 }
 
@@ -85,25 +66,6 @@ function fetchPopularMoviesListModal() {
       console.log(Error);
     });
 }
-
-function showDetails() {
-  return fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
-  )
-    .then(res => res.json())
-    .then(result => {
-      genres = result.genres;
-      return result.genres;
-    });
-}
-///////////
-// function activeDetailsPage() {
-//   gallery.addEventListener('click', () => {
-//     gallery.classList.add('is-hidded');
-//   });
-//   modalWindow.classList.remove('is-hiden');
-// }
-//////
 
 function activeDetailsPage(event) {
   event.preventDefault();
