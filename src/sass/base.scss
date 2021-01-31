@@ -8,17 +8,17 @@ html {
   box-sizing: inherit;
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/roboto-medium.ttf") format("truetype");
+  src: local(''), url('../fonts/roboto-medium.ttf') format('truetype');
   /* Modern Browsers */
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: local(""), url("../fonts/roboto-bold.ttf") format("truetype");
+  src: local(''), url('../fonts/roboto-bold.ttf') format('truetype');
   /* Modern Browsers */
 }
 body {
@@ -46,6 +46,14 @@ body {
   .container {
     width: 320px;
   }
+
+  .js-modal {
+    width: 320px;
+    background: #e5e5e5;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 250px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -53,6 +61,14 @@ body {
     width: 768px;
     padding-left: 76px;
     padding-right: 76px;
+  }
+  .js-modal {
+    position: absolute;
+    width: 768px;
+    background: #e5e5e5;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 290px;
   }
 }
 
@@ -67,6 +83,14 @@ body {
 .section {
   padding-top: 20px;
   padding-bottom: 40px;
+}
+.js-modal {
+  position: absolute;
+  width: 1024px;
+  background: #e5e5e5;
+  padding-left: 71px;
+  padding-right: 71px;
+  padding-top: 290px;
 }
 @media (min-width: 768px) {
   .section {
