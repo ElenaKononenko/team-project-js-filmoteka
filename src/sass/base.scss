@@ -85,7 +85,8 @@ body {
   padding-bottom: 40px;
 }
 .js-modal {
-  position: absolute;
+  position: fixed;
+  top: 0;
   width: 1024px;
   background: #e5e5e5;
   padding-left: 71px;

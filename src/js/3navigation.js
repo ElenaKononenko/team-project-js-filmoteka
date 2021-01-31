@@ -2,7 +2,7 @@ console.log('Hello from 3navigation');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
 
-showDetails();
+showDetails(movieId);
 fetchPopularMoviesListModal();
 
 function showDetails(
@@ -32,7 +32,6 @@ function showDetails(
         <p class="votes about">${description}</p>`;
 
   modalWindow.insertAdjacentHTML('afterbegin', modalCardinfo);
-  return modalWindow;
 }
 
 function fetchPopularMoviesListModal() {
