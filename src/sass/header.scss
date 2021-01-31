@@ -128,6 +128,7 @@
   .span_logo {
     display: none;
   }
+
   .img-logo {
     width: 20px;
     height: 20px;
@@ -143,8 +144,18 @@
   margin-right: 39px;
 }
 
+
 .input-form {
   color: #fff;
+
+.error {
+  font-weight: normal;
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ff001b;
+
 }
 
 .form_input {
