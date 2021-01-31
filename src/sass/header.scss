@@ -91,6 +91,7 @@
   .span_logo {
     display: none;
   }
+
   .img-logo {
     width: 20px;
     height: 20px;
@@ -104,6 +105,15 @@
 
 .head {
   margin-right: 39px;
+}
+
+.error {
+  font-weight: normal;
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ff001b;
 }
 
 .form_input {

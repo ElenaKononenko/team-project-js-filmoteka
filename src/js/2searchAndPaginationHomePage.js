@@ -2,8 +2,10 @@ const refs = {
   searchForms: document.getElementById('js-search-form'),
   backBtn: document.getElementById('js-backBtn'),
   nextBtn: document.getElementById('js-nextBtn'),
+  error: document.getElementById('js-error'),
 };
 
+refs.error.textContent = '';
 let currentPageNumber = document.getElementById('js-currentPageNumber');
 
 refs.searchForms.addEventListener('submit', searchFilms);
@@ -22,6 +24,11 @@ function fetchFilms() {
     .then(data => {
       renderFilms = data.results;
       list.innerHTML = '';
+      if (renderFilms.length === 0) {
+        refs.error.textContent =
+          'Search result not successful. Enter the correct movie name and try again.';
+        fetchPopularMoviesList();
+      }
       const cardsFragment = document.createDocumentFragment();
       renderFilms.map(el => {
         cardsFragment.appendChild(
@@ -54,6 +61,7 @@ function checkInput(){
 
 function searchFilms(event) {
   event.preventDefault();
+  refs.error.textContent = '';
   inputValue = event.currentTarget.search.value;
   checkInput()
 }
