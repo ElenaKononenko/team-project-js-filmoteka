@@ -4,10 +4,10 @@ const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
 
 function activeDetailsPage(movie) {
-  window.addEventListener('keydown', onPressEscape);
-  overlayRef.addEventListener('click', onBackDropClick);
   backDropRef.classList.add('is-open');
   showDetails(movie);
+  window.addEventListener('keydown', onPressEscape);
+  overlayRef.addEventListener('click', onBackDropClick);
 }
 
 function showDetails({
@@ -28,7 +28,7 @@ function showDetails({
         <p class="votes">Vote/Votes${voteAverage}${voteCount}</p>
         <p class="votes">Popularity${popularity}</p>
         <p class="votes">Original Title${originalTitle}</p>
-        <p class="votes">${genreString(genre)}</p>
+        <p class="votes">${genreStringModal(genre)}</p>
         <h2 class="about">ABOUT</h2>
         <p class="votes about">${description}</p>`;
 
@@ -51,4 +51,21 @@ function onPressEscape(event) {
   if (event.code === 'Escape') {
     onCloseModal();
   }
+}
+
+function genreStringModal(genre) {
+  if (genre.length === 0) {
+    return 'Other';
+  }
+  return genre
+    .reduce((acc, el, index) => {
+      return (
+        acc +
+        (genres.find(elem => {
+          return elem.id === el;
+        }).name || 'Other') +
+        ', '
+      );
+    }, '')
+    .slice(0, -2);
 }
