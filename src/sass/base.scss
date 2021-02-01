@@ -8,17 +8,17 @@ html {
   box-sizing: inherit;
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/roboto-medium.ttf") format("truetype");
+  src: local(''), url('../fonts/roboto-medium.ttf') format('truetype');
   /* Modern Browsers */
 }
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: local(""), url("../fonts/roboto-bold.ttf") format("truetype");
+  src: local(''), url('../fonts/roboto-bold.ttf') format('truetype');
   /* Modern Browsers */
 }
 body {
@@ -73,4 +73,14 @@ body {
     padding-top: 60px;
     padding-bottom: 60px;
   }
+}
+
+.js-modal {
+  position: fixed;
+  bottom: 0;
+  width: 1024px;
+  background: #e5e5e5;
+  padding-left: 71px;
+  padding-right: 71px;
+  padding-top: 290px;
 }
