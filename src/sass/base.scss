@@ -46,14 +46,11 @@ body {
   .container {
     width: 320px;
   }
-
-  // .js-modal {
-  //   width: 320px;
-  //   background: #e5e5e5;
-  //   padding-left: 20px;
-  //   padding-right: 20px;
-  //   padding-top: 250px;
-  // }
+  .container.modalCard {
+    // height: 700px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -62,14 +59,12 @@ body {
     padding-left: 76px;
     padding-right: 76px;
   }
-  // .js-modal {
-  //   position: absolute;
-  //   width: 768px;
-  //   background: #e5e5e5;
-  //   padding-left: 75px;
-  //   padding-right: 75px;
-  //   padding-top: 290px;
-  // }
+  .container.modalCard {
+    width: 600px;
+    margin: 0%;
+    padding: 0;
+    padding-bottom: 30px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -78,21 +73,19 @@ body {
     padding-left: 71px;
     padding-right: 71px;
   }
+  .container.modalCard {
+    width: 800px;
+    margin: 0%;
+    padding: 0;
+    padding-bottom: 30px;
+  }
 }
 
 .section {
   padding-top: 20px;
   padding-bottom: 40px;
 }
-// .js-modal {
-//   position: fixed;
-//   top: 0;
-//   width: 1024px;
-//   background: #e5e5e5;
-//   padding-left: 71px;
-//   padding-right: 71px;
-//   padding-top: 290px;
-// }
+
 @media (min-width: 768px) {
   .section {
     padding-top: 60px;

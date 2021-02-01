@@ -20,17 +20,36 @@ function showDetails({
   genre_ids: genre,
   overview: description,
 }) {
-  const modalCardinfo = `<img class="gallery__item__picture"
+  const modalCardinfo = `<img class="modalImg"
                     src='${basicPosterUrl}${imgPath}'
                     alt=${filmTitle}
                     />
-        <h2 class="gallery__item__title">${filmTitle}</h2>
-        <p class="votes">Vote/Votes${voteAverage}${voteCount}</p>
-        <p class="votes">Popularity${popularity}</p>
-        <p class="votes">Original Title${originalTitle}</p>
-        <p class="votes">${genreStringModal(genre)}</p>
-        <h2 class="about">ABOUT</h2>
-        <p class="votes about">${description}</p>`;
+                    <div class="description">
+        <h2 class="modal_title">${filmTitle}</h2>
+        <table>
+<tr>
+  <td class="definition">Vote/Votes</td>
+  <td class="definition info"><span class="rating-modal">${voteAverage}</span> / ${voteCount}</td>
+  </tr>
+<tr>
+  <td class="definition">Popularity</td>
+  <td class="definition info">${popularity}</td>
+</tr>
+<tr>
+  <td class="definition">Original Title</td>
+  <td class="definition info originalTitle">${originalTitle}</td>
+</tr>
+<tr>
+  <td class="definition">Genre</td>
+  <td class="definition info">${genreStringModal(genre)}</td>
+</tr>
+</table>
+<h2 class="about">ABOUT</h2>
+<p class="overview">${description}</p>
+<button id="btnModal-js" class="btn-modal">
+      ADD TO WATCHED
+    </button>
+    <button id="btnModal-js" class="btn-modal">ADD TO QUEUE</button></div>`;
 
   modalCard.insertAdjacentHTML('afterbegin', modalCardinfo);
 }
