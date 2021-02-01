@@ -46,6 +46,11 @@ body {
   .container {
     width: 320px;
   }
+  .container.modalCard {
+    // height: 700px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -53,6 +58,12 @@ body {
     width: 768px;
     padding-left: 76px;
     padding-right: 76px;
+  }
+  .container.modalCard {
+    width: 600px;
+    margin: 0%;
+    padding: 0;
+    padding-bottom: 30px;
   }
 }
 
@@ -62,12 +73,19 @@ body {
     padding-left: 71px;
     padding-right: 71px;
   }
+  .container.modalCard {
+    width: 800px;
+    margin: 0%;
+    padding: 0;
+    padding-bottom: 30px;
+  }
 }
 
 .section {
   padding-top: 20px;
   padding-bottom: 40px;
 }
+
 @media (min-width: 768px) {
   .section {
     padding-top: 60px;
