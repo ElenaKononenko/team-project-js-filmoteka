@@ -130,3 +130,25 @@
 .btnIsHidden {
   display: none;
 }
+
+.errorPlug {
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+.errorPlug p {
+  width: 50%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.errorPlug img {
+  display: block;
+  width: 100%;
+  height: 500px;
+  border-radius: 5px;
+}
