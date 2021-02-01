@@ -42,16 +42,7 @@ function fetchFilms() {
       }
       const cardsFragment = document.createDocumentFragment();
       renderFilms.map(el => {
-        cardsFragment.appendChild(
-          createCardFunc(
-            el.poster_path,
-            el.title || el.original_title,
-            el.genre_ids,
-            el.release_date,
-            el.vote_average,
-            el.id,
-          ),
-        );
+        cardsFragment.appendChild(createCardFunc(el));
       });
       list.appendChild(cardsFragment);
     })
