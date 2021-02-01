@@ -47,10 +47,11 @@
   color: #545454;
 }
 
-.link {
-  color: #545454;
-  margin-left: 3px;
-}
+// link styles
+// .link {
+//   color: #545454;
+//   margin-left: 3px;
+// }
 
 @media (min-width: 320px) {
   .text {
@@ -75,4 +76,12 @@
   height: 12.75px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.button_footer {
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 0.5px solid #545454;
+  color: #545454;
 }
