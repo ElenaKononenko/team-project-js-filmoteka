@@ -15,12 +15,15 @@ const list = document.querySelector('.galleryHome');
 fetchGenres();
 fetchPopularMoviesList();
 
-function createCardFunc(imgPath, filmTitle, genre, date, voteAverage, movieId) {
-  const listItem = cardTemplate(imgPath, filmTitle, genre, date, voteAverage);
-  listItem.addEventListener('click', () => {
-    activeDetailsPage(movieId, false);
-  });
-  return listItem;
+function fetchGenres() {
+  return fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
+  )
+    .then(res => res.json())
+    .then(result => {
+      genres = result.genres;
+      return result.genres;
+    });
 }
 
 function fetchPopularMoviesList() {
@@ -33,16 +36,7 @@ function fetchPopularMoviesList() {
       list.innerHTML = '';
       const cardsFragment = document.createDocumentFragment();
       renderFilms.map(el => {
-        cardsFragment.appendChild(
-          createCardFunc(
-            el.poster_path,
-            el.title || el.original_title,
-            el.genre_ids,
-            el.release_date,
-            el.vote_average,
-            el.id,
-          ),
-        );
+        cardsFragment.appendChild(createCardFunc(el));
       });
       list.appendChild(cardsFragment);
     })
@@ -51,15 +45,51 @@ function fetchPopularMoviesList() {
     });
 }
 
-function fetchGenres() {
-  return fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
-  )
-    .then(res => res.json())
-    .then(result => {
-      genres = result.genres;
-      return result.genres;
-    });
+function createCardFunc(movie) {
+  const listItem = cardTemplate(movie);
+  listItem.addEventListener('click', () => {
+    activeDetailsPage(movie);
+  });
+  return listItem;
+}
+
+function cardTemplate({
+  poster_path: imgPath,
+  title: filmTitle,
+  original_title: filmOrigTitle,
+  genre_ids: genre,
+  release_date: date,
+  vote_average: voteAverage,
+}) {
+  const result = document.createElement('li');
+  result.classList.add('gallery__item');
+  let poster = '../images/noPoster.jpg';
+  if (imgPath) {
+    poster = basicPosterUrl + imgPath;
+  }
+
+  let temp = `<img class="gallery__item__picture"
+                    src='${poster}'
+                    alt=${filmTitle}
+                    />
+                <h2 class="gallery__item__title">${
+                  filmTitle || filmOrigTitle
+                }</h2>
+
+                <p class="gallery__item__description">
+                    ${genreString(genre)}`;
+  if (date.length >= 4) {
+    temp += `<span class="gallery__item__description__decor">|</span>
+             <span class="gallery__item__description__year">${date.substring(
+               0,
+               4,
+             )}</span>`;
+  }
+  temp += `<span class="gallery__item__description__rating">
+            ${voteAverage}</span>
+            </p> `;
+  result.insertAdjacentHTML('afterbegin', temp);
+  return result;
 }
 
 function genreString(genre) {
@@ -81,34 +111,4 @@ function genreString(genre) {
       );
     }, '')
     .slice(0, -2);
-}
-
-function cardTemplate(imgPath, filmTitle, genre, date, voteAverage) {
-  const result = document.createElement('li');
-  result.classList.add('gallery__item');
-  let poster = '../images/noPoster.jpg';
-  if (imgPath) {
-    poster = basicPosterUrl + imgPath;
-  }
-
-  let temp = `<img class="gallery__item__picture"
-                    src='${poster}'
-                    alt=${filmTitle}
-                    />
-                <h2 class="gallery__item__title">${filmTitle}</h2>
-
-                <p class="gallery__item__description">
-                    ${genreString(genre)}`;
-  if (date.length >= 4) {
-    temp += `<span class="gallery__item__description__decor">|</span>
-             <span class="gallery__item__description__year">${date.substring(
-               0,
-               4,
-             )}</span>`;
-  }
-  temp += `<span class="gallery__item__description__rating">
-            ${voteAverage}</span>
-            </p> `;
-  result.insertAdjacentHTML('afterbegin', temp);
-  return result;
 }
