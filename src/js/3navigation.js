@@ -53,13 +53,12 @@ function onPressEscape(event) {
   }
 }
 
-
 function genreStringModal(genre) {
   if (genre.length === 0) {
     return 'Other';
   }
   return genre
-    .reduce((acc, el, index) => {
+    .reduce((acc, el) => {
       return (
         acc +
         (genres.find(elem => {
@@ -70,5 +69,3 @@ function genreStringModal(genre) {
     }, '')
     .slice(0, -2);
 }
-
-
