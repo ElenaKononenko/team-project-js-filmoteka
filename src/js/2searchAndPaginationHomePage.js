@@ -8,6 +8,7 @@ const refs = {
 refs.error.textContent = '';
 let currentPageNumber = document.getElementById('js-currentPageNumber');
 
+refs.searchForms.addEventListener('input', resetErrors);
 refs.searchForms.addEventListener('submit', searchFilms);
 refs.backBtn.addEventListener('click', plaginationNavigation);
 refs.nextBtn.addEventListener('click', plaginationNavigation);
@@ -15,6 +16,17 @@ refs.nextBtn.addEventListener('click', plaginationNavigation);
 if (pageNumber === 1) {
   refs.backBtn.classList.add('btnIsHidden');
 }
+
+function errorContent() {
+  refs.error.textContent =
+    'Search result not successful. Enter the correct movie name and try again.';
+  fetchPopularMoviesList();
+}
+
+function resetErrors() {
+  refs.error.textContent = '';
+  fetchPopularMoviesList();
+};
 
 function fetchFilms() {
   let url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
@@ -26,9 +38,7 @@ function fetchFilms() {
       console.log(renderFilms);
       list.innerHTML = '';
       if (renderFilms.length === 0) {
-        refs.error.textContent =
-          'Search result not successful. Enter the correct movie name and try again.';
-        fetchPopularMoviesList();
+        errorContent();
       }
       const cardsFragment = document.createDocumentFragment();
       renderFilms.map(el => {
@@ -47,6 +57,7 @@ function fetchFilms() {
     })
     .catch(Error => {
       console.log(Error);
+      errorContent();
     });
 }
 
@@ -54,7 +65,7 @@ function fetchFilms() {
 
 function checkInput(){
   if (inputValue === '') {
-    fetchPopularMoviesList();
+    resetErrors();
   } else {
     fetchFilms();
   }

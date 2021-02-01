@@ -146,15 +146,30 @@
 
 .input-form {
   color: #fff;
+}
 
-  .error {
-    font-weight: normal;
-    text-align: center;
-    margin-top: 22px;
-    font-size: 14px;
-    line-height: 16px;
-    color: #ff001b;
-  }
+.error {
+  font-weight: normal;
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ff001b;
+}
+
+.form_input {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  width: 336px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.6);
+}
+
+// .form_input:focus,
+.form_input:hover {
+  border-bottom: 0.5px solid #fff;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
   .form_input {
     margin-left: auto;

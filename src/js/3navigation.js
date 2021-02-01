@@ -3,8 +3,6 @@ const modalCard = document.querySelector('.modalCard');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
 
-// listItem.addEventListener('click', activeDetailsPage);
-
 function activeDetailsPage(movie) {
   window.addEventListener('keydown', onPressEscape);
   overlayRef.addEventListener('click', onBackDropClick);
