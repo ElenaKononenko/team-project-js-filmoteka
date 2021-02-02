@@ -46,12 +46,22 @@ function showDetails({
 </table>
 <h2 class="about">ABOUT</h2>
 <p class="overview">${description}</p>
-<button id="btnModal-js" class="btn-modal">
+<button id="btnModal-watched-js" class="btn-modal">
       ADD TO WATCHED
     </button>
-    <button id="btnModal-js" class="btn-modal">ADD TO QUEUE</button></div>`;
+    <button id="btnModal-queue-js" class="btn-modal">ADD TO QUEUE</button></div>`;
 
   modalCard.insertAdjacentHTML('afterbegin', modalCardinfo);
+
+  const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
+  watchedModalBtnRef.addEventListener('click', e => {
+    console.log('Привет это просмотренные');
+  });
+
+  const queueModalBtnRef = document.getElementById('btnModal-queue-js');
+  queueModalBtnRef.addEventListener('click', e => {
+    console.log('Привет это в очереди');
+  });
 }
 
 function onCloseModal() {
