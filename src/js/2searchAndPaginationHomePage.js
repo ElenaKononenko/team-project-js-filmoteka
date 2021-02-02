@@ -1,12 +1,4 @@
-const refs = {
-  searchForms: document.getElementById('js-search-form'),
-  backBtn: document.getElementById('js-backBtn'),
-  nextBtn: document.getElementById('js-nextBtn'),
-  error: document.getElementById('js-error'),
-};
-
 refs.error.textContent = '';
-let currentPageNumber = document.getElementById('js-currentPageNumber');
 
 refs.searchForms.addEventListener('submit', searchFilms);
 refs.backBtn.addEventListener('click', plaginationNavigation);
@@ -19,16 +11,22 @@ if (pageNumber === 1) {
 function errorContent() {
   refs.error.textContent =
     'Search result not successful. Enter the correct movie name and try again.';
-  fetchPopularMoviesList();
 }
 
 function fetchFilms() {
   let url = `${BASE_URL}?api_key=${API_KEY}&query=${inputValue}&page=${pageNumber}`;
 
-  return fetch(url)
+  fetch(url)
     .then(res => res.json())
     .then(data => {
       renderFilms = data.results;
+      let totalPages = data.total_pages;
+      if (pageNumber >= totalPages) {
+        refs.nextBtn.classList.add('btnIsHidden');
+      } else {
+        refs.nextBtn.classList.remove('btnIsHidden');
+      }
+      console.log(data.total_pages);
       console.log(renderFilms);
       list.innerHTML = '';
       if (renderFilms.length === 0) {
@@ -46,6 +44,9 @@ function fetchFilms() {
     });
 }
 
+if (pageNumber === 1) {
+  refs.backBtn.classList.add('btnIsHidden');
+}
 //CREATE FUNCTION TO CHECK INPUT
 
 function checkInput() {
@@ -60,6 +61,7 @@ function searchFilms(event) {
   event.preventDefault();
   refs.error.textContent = '';
   inputValue = event.currentTarget.search.value;
+  resetPage();
   checkInput();
 }
 
@@ -68,12 +70,27 @@ function plaginationNavigation(e) {
     pageNumber = pageNumber - 1;
     currentPageNumber.textContent = pageNumber;
     checkInput();
+    scroll();
   } else {
     pageNumber = pageNumber + 1;
     currentPageNumber.textContent = pageNumber;
     checkInput();
+    scroll();
   }
   pageNumber === 1 || pageNumber < 1
     ? refs.backBtn.classList.add('btnIsHidden')
     : refs.backBtn.classList.remove('btnIsHidden');
+}
+
+function resetPage() {
+  pageNumber = 1;
+  currentPageNumber.textContent = pageNumber;
+  refs.backBtn.classList.add('btnIsHidden');
+}
+
+function scroll() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 }

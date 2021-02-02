@@ -10,11 +10,16 @@ let pageNumber = 1;
 const inputValue = '';
 let renderFilms = [];
 let genres = [];
-// const plaginationContainer = document.querySelector('.plaginationContainer');
+let currentPageNumber = document.getElementById('js-currentPageNumber');
 const list = document.querySelector('.galleryHome');
-
+const refs = {
+  searchForms: document.getElementById('js-search-form'),
+  backBtn: document.getElementById('js-backBtn'),
+  nextBtn: document.getElementById('js-nextBtn'),
+  error: document.getElementById('js-error'),
+};
 fetchGenres();
-fetchPopularMoviesList();
+startFetch();
 
 function fetchGenres() {
   return fetch(
@@ -34,9 +39,15 @@ function fetchPopularMoviesList() {
     .then(res => res.json())
     .then(data => {
       renderFilms = data.results;
+      let totalPages = data.total_pages;
+      if (pageNumber >= totalPages) {
+        refs.nextBtn.classList.add('btnIsHidden');
+      } else {
+        refs.nextBtn.classList.remove('btnIsHidden');
+      }
       list.innerHTML = '';
       const cardsFragment = document.createDocumentFragment();
-      // plaginationContainer.classList.remove('btnIsHidden');
+
       renderFilms.map(el => {
         cardsFragment.appendChild(createCardFunc(el));
       });
@@ -44,7 +55,6 @@ function fetchPopularMoviesList() {
     })
     .catch(error => {
       errorPlug();
-      // plaginationContainer.classList.add('btnIsHidden');
     });
 }
 
@@ -130,4 +140,8 @@ function errorPlug() {
  <img src="../images/noPoster.jpg"alt="Ошибка">
  </div>`;
   list.insertAdjacentHTML('afterbegin', error);
+}
+function startFetch() {
+  resetPage();
+  checkInput();
 }
