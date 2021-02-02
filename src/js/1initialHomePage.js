@@ -10,6 +10,7 @@ let pageNumber = 1;
 const inputValue = '';
 let renderFilms = [];
 let genres = [];
+// const plaginationContainer = document.querySelector('.plaginationContainer');
 const list = document.querySelector('.galleryHome');
 
 fetchGenres();
@@ -35,13 +36,15 @@ function fetchPopularMoviesList() {
       renderFilms = data.results;
       list.innerHTML = '';
       const cardsFragment = document.createDocumentFragment();
+      // plaginationContainer.classList.remove('btnIsHidden');
       renderFilms.map(el => {
         cardsFragment.appendChild(createCardFunc(el));
       });
       list.appendChild(cardsFragment);
     })
-    .catch(Error => {
-      console.log(Error);
+    .catch(error => {
+      errorPlug();
+      // plaginationContainer.classList.add('btnIsHidden');
     });
 }
 
@@ -96,7 +99,8 @@ function genreString(genre) {
   if (genre.length === 0) {
     return 'Other';
   }
-  return genre
+
+  let genreFilter = genre
     .slice(0, 3)
     .reduce((acc, el, index) => {
       if (index === 2 && genre.length > 3) {
@@ -111,4 +115,19 @@ function genreString(genre) {
       );
     }, '')
     .slice(0, -2);
+
+  if (genreFilter.length > 30) {
+    let genreFilterMini = genreFilter.split(',');
+    genreFilterMini.splice(2, 1, 'Other');
+    return genreFilterMini;
+  }
+
+  return genreFilter;
+}
+function errorPlug() {
+  const error = `<div class="errorPlug">
+ <p>Что-то пошло не так! Повторите запрос на сервер</p>
+ <img src="../images/noPoster.jpg"alt="Ошибка">
+ </div>`;
+  list.insertAdjacentHTML('afterbegin', error);
 }

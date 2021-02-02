@@ -15,16 +15,211 @@
 .js-modal.is-open {
   opacity: 1;
   pointer-events: initial;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .modalCard {
+    background: #f7f5f5;
+    z-index: 10;
+    border-radius: 2%;
+  }
 }
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
+
+@media (min-width: 320px) {
+  .modalImg {
+    width: 280px;
+    height: 300px;
+    padding-top: 20px;
+    border-radius: 2%;
+  }
+  .modal_title {
+    padding-top: 10px;
+    font-size: 20px;
+    line-height: 23px;
+  }
+  table {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .overview {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 10px;
+  }
 }
-.modalCard {
-  background: #e5e5e5;
-  z-index: 10;
+
+@media (min-width: 768px) {
+  .modalImg {
+    width: 294px;
+    height: 416px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    border-radius: 2%;
+  }
+  .modal_title {
+    padding-top: 30px;
+    font-size: 30px;
+    line-height: 35px;
+  }
+
+  .description {
+    display: block;
+  }
+
+  .container.modalCard {
+    display: flex;
+  }
+
+  table {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .overview {
+    padding-top: 20px;
+    padding-right: 70px;
+    padding-bottom: 20px;
+    font-size: 14px;
+  }
+  .btn-modal {
+    margin-right: 10px;
+  }
+  .btn-modal:nth-last-child(1) {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modalImg {
+    width: 426px;
+    height: 514px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    border-radius: 2%;
+  }
+
+  .modal_title {
+    padding-top: 30px;
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .description {
+    display: block;
+  }
+
+  table {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .overview {
+    padding-top: 20px;
+    padding-right: 70px;
+    padding-bottom: 20px;
+    font-size: 14px;
+  }
+  .container.modalCard {
+    display: flex;
+  }
+  .btn-modal {
+    margin-right: 20px;
+  }
+}
+
+table {
+  border: 2px transparent;
+  border-collapse: separate;
+}
+th,
+td {
+  border: 2px transparent;
+  width: 50%;
+}
+.definition {
+  line-height: 10px;
+  height: 16px;
+  left: 527px;
+  top: 367px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #8c8c8c;
+}
+.modal_title {
+  font-weight: 500;
+  color: #000000;
+  text-transform: uppercase;
+}
+.overview {
+  font-weight: 500;
+
+  line-height: 20px;
+  color: #000000;
+}
+
+.definition.info {
+  color: #000000;
+}
+
+.info.originalTitle {
+  text-transform: uppercase;
+}
+
+.rating-modal {
+  padding-left: 5px;
+  padding-right: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  background-color: #ff6b01;
+  color: white;
+}
+
+.btn-modal {
+  width: 136px;
+  height: 44px;
+  left: 678px;
+  top: 642px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  font-family: Roboto;
+  font-style: normal;
+
+  font-size: 12px;
+  line-height: 1.33;
+  color: black;
+  outline: none;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.btn-modal-isListed {
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: #fff;
+  width: 136px;
+  height: 44px;
+  left: 678px;
+  top: 642px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-right: 20px;
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.33;
+  outline: none;
+  cursor: pointer;
 }
