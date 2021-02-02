@@ -60,7 +60,6 @@ function showDetails({
 
   const queueModalBtnRef = document.getElementById('btnModal-queue-js');
   queueModalBtnRef.addEventListener('click', e => {
-    console.log(e.target);
     console.log('Привет это в очереди');
   });
 }
