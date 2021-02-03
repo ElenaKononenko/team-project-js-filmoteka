@@ -74,7 +74,7 @@ function readQueueLocalStorage() {
   parsedSettings.map(e => console.log(e));
 }
 
-// Менет Хедер по нажатию на myLibrary
+// Меняет Хедер по нажатию на myLibrary
 
 const homeHeader =  document.getElementById('homeHeader');
 const libaryHeader = document.getElementById('libraryHeader');
