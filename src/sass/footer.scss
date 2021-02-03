@@ -82,6 +82,8 @@
   background: transparent;
   outline: none;
   border: none;
+
   border-bottom: 0.5px solid $footer-text-color;
   color: $footer-text-color;
+   cursor: pointer;
 }
