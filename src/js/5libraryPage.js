@@ -85,10 +85,11 @@ const homeLink = document.getElementById('homeLink');
 
 libraryLink.addEventListener('click', (e) => {
   console.log(e.target);
-  homeHeader.classList.add('visually-hidden')
-  libaryHeader.classList.remove('visually-hidden')
-})
 
-homeLink.addEventListener('click', e => {
-  homeHeader.classList.remove('visually-hidden')
-})
+  homeHeader.classList.add('visually-hidden');
+  libaryHeader.classList.remove('visually-hidden');
+
+  libraryLink.classList.add('current');
+  homeLink.classList.remove('current');
+});
+
