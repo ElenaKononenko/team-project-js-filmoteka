@@ -8,9 +8,14 @@
     <!-- Сюда будет всталена ссылка на файл стилей -->
     <!-- inject:css -->
     <!-- endinject -->
+    <script src = " https://code.jquery.com/jquery-3.5.1.min.js "></script >
   </head>
 
   <body>
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+    
     //=./html/header.html
     //=./html/main.html
     //=./html/footer.html
@@ -18,6 +23,13 @@
     <!-- inject:js -->
     
     <!-- endinject -->
+
+<script>
+  $(window).on("load",function(){
+    $(".loader-container").fadeOut('slow')
+  });
+</script>
+
   </body>
 </html>
 
