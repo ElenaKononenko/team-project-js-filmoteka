@@ -1,17 +1,15 @@
-$(window).on('load', function () {
-    var $preloader = $('#page-preloader'),
-        $spinner   = $preloader.find('.spinner');
-    $spinner.fadeOut();
-    $preloader.delay(350).fadeOut('slow');
-});
 
 
 refs.error.textContent = '';
 
 refs.searchForms.addEventListener('submit', searchFilms);
 refs.backBtn.addEventListener('click', plaginationNavigation);
-refs.nextBtn.addEventListener('click', plaginationNavigation);
+refs.nextBtn.addEventListener('click', plaginationNavigation);  
 
+$(window).on("load",function(){
+    $(".loader-container").fadeOut('slow')
+});
+  
 if (pageNumber === 1) {
   refs.backBtn.classList.add('btnIsHidden');
 }
