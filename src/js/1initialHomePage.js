@@ -1,4 +1,16 @@
 ('use strict');
+
+var firebaseConfig = {
+  apiKey: 'AIzaSyDYFDsGasHWWG9JVZMqavo8otHQIfri16c',
+  authDomain: 'team-project-js-filmoteka.firebaseapp.com',
+  projectId: 'team-project-js-filmoteka',
+  storageBucket: 'team-project-js-filmoteka.appspot.com',
+  messagingSenderId: '378351083417',
+  appId: '1:378351083417:web:43f8e90e12a94511ff3d08',
+};
+
+firebase.initializeApp(firebaseConfig);
+
 const posterUrl = 'https://image.tmdb.org/t/p';
 const sizePoster = '/w500';
 const basicPosterUrl = posterUrl + sizePoster;
@@ -144,4 +156,103 @@ function errorPlug() {
 function startFetch() {
   resetPage();
   checkInput();
+}
+
+//authorization
+const formAuth = document.querySelector('.container__modalAuth__form');
+const inputEmail = document.querySelector('.container__modalAuth__form__email');
+const inputRassword = document.querySelector(
+  '.container__modalAuth__form__password',
+);
+const btnAuth = document.querySelector('.btnAuth');
+const btnAuthLibrary = document.querySelector('.btnAuthLibrary');
+const btnIn = document.querySelector('.in');
+const btnRegister = document.querySelector('.register');
+const btnEnter = document.querySelector('.enter');
+const modalAuth = document.getElementById('js_modalAuth');
+const overlayAuth = document.getElementById('overlay__modalAuth');
+
+btnAuth.addEventListener('click', onOpenModalAuth);
+btnAuthLibrary.addEventListener('click', onOpenModalAuth);
+let email = '';
+let password = '';
+
+formAuth.addEventListener('submit', event => {
+  event.preventDefault();
+  email = event.currentTarget.email.value;
+  password = event.currentTarget.parol.value;
+  console.log(email, password);
+  signInWithEmailPassword(email, password);
+});
+//запись мыла и пароля
+function signUpWithEmailPasswoerd() {
+  // var email = 'test@example.com';
+  // var password = 'hunter2';
+  // [START auth_signup_password]
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      console.log('успешно записан');
+
+      var user = userCredential.user;
+      // ...
+    })
+    .catch(error => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ..
+    });
+  // [END auth_signup_password]
+}
+
+//функция для входа
+function signInWithEmailPassword() {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      var user = userCredential.user;
+      console.log(email, 'email есть в базе');
+      console.log('входите');
+      homeHeader.classList.add('visually-hidden');
+      libaryHeader.classList.remove('visually-hidden');
+      console.log(user.email);
+      onCloseModalAuth();
+    })
+    .catch(error => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(email, 'email нету в базе ,нужно зарегаться');
+    });
+  // [END auth_signin_password]
+}
+
+function onCloseModalAuth() {
+  window.removeEventListener('keydown', onPressEscapeAuth);
+  modalAuth.classList.remove('is-open');
+  modalCard.innerHTML = '';
+}
+
+function onBackDropClickAuth(event) {
+  console.log(event);
+  if (event.target === event.currentTarget) {
+    console.log(event.target);
+    console.log(event.currentTarget);
+    onCloseModalAuth();
+  }
+}
+function onPressEscapeAuth(event) {
+  if (event.code === 'Escape') {
+    onCloseModalAuth();
+  }
+}
+function onOpenModalAuth() {
+  modalAuth.classList.add('is-open');
+  window.addEventListener('keydown', onPressEscapeAuth);
+
+  overlayAuth.addEventListener('click', onBackDropClickAuth);
+  console.log(overlayAuth);
 }
