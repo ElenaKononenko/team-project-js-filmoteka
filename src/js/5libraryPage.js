@@ -74,7 +74,7 @@ function readQueueLocalStorage() {
   parsedSettings.map(e => console.log(e));
 }
 
-// Менет Хедер по нажатию на myLibrary
+// Меняет Хедер по нажатию на myLibrary
 
 const homeHeader =  document.getElementById('homeHeader');
 const libaryHeader = document.getElementById('libraryHeader');
@@ -85,10 +85,11 @@ const homeLink = document.getElementById('homeLink');
 
 libraryLink.addEventListener('click', (e) => {
   console.log(e.target);
-  homeHeader.classList.add('visually-hidden')
-  libaryHeader.classList.remove('visually-hidden')
-})
 
-homeLink.addEventListener('click', e => {
-  homeHeader.classList.remove('visually-hidden')
-})
+  homeHeader.classList.add('visually-hidden');
+  libaryHeader.classList.remove('visually-hidden');
+
+  libraryLink.classList.add('current');
+  homeLink.classList.remove('current');
+});
+
