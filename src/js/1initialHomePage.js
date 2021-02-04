@@ -159,6 +159,7 @@ function startFetch() {
 }
 
 //authorization
+
 const formAuth = document.querySelector('.container__modalAuth__form');
 const inputEmail = document.querySelector('.container__modalAuth__form__email');
 const inputRassword = document.querySelector(
@@ -184,7 +185,9 @@ formAuth.addEventListener('submit', event => {
   console.log(email, password);
   signInWithEmailPassword(email, password);
 });
+
 //запись мыла и пароля
+
 function signUpWithEmailPasswoerd() {
   // var email = 'test@example.com';
   // var password = 'hunter2';
@@ -209,6 +212,7 @@ function signUpWithEmailPasswoerd() {
 }
 
 //функция для входа
+
 function signInWithEmailPassword() {
   firebase
     .auth()
