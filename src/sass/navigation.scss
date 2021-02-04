@@ -52,8 +52,9 @@
     border: solid 2px $accent-color;
   }
 }
-.container__modalAuth__form__btn,
+// .container__modalAuth__form__btn,
 .container__modalAuth__btn {
+  display: block;
   width: 100px;
   height: 35px;
   left: 678px;
