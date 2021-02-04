@@ -3,13 +3,39 @@ const modalCard = document.querySelector('.modalCard');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
 
+let selectFilm = [];
+
+function activeLibraryPage() {
+  // показывает страницу с библиотекой и прячет остальные,
+  // запускает функцию отрисовки фильмов из очереди drawQueueFilmList(которую сделает пятый участник)
+  // и добавляет кнопке списка очереди фильмов эффект выбранной с помощью класса,
+  // а также вешает слушателей на кнопки показа очереди фильмов и просмотренных фильмов
+  // и удаляет ненужных всех слушателей(таких 4 во всем проекте не нужных на этой странице);
+}
+
 function activeDetailsPage(movie) {
+  console.log(movie);
   backDropRef.classList.add('is-open');
   showDetails(movie);
   window.addEventListener('keydown', onPressEscape);
   overlayRef.addEventListener('click', onBackDropClick);
+
+  //! Кнопки на добавление в очередь и просмотренные
+
+  const queueModalBtnRef = document.getElementById('btnModal-queue-js');
+  const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
+
+  queueModalBtnRef.addEventListener('click', e => {
+    // Queue();
+    toggleToQueue(movie);
+  });
+  watchedModalBtnRef.addEventListener('click', e => {
+    toggleToWatched(movie);
+  });
 }
 
+// console.log(fetchPopularMoviesList());
+// console.log(renderFilms);
 function showDetails({
   poster_path: imgPath,
   title: filmTitle,
@@ -53,17 +79,30 @@ function showDetails({
 
   modalCard.insertAdjacentHTML('afterbegin', modalCardinfo);
 
-  const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
-  watchedModalBtnRef.addEventListener('click', e => {
-    console.log('Привет это просмотренные');
-  });
+  // //! Кнопки на добавление в очередь и просмотренные
+  // const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
+  // watchedModalBtnRef.addEventListener('click', e => {
+  //   console.log('Привет это просмотренные');
+  // });
 
-  const queueModalBtnRef = document.getElementById('btnModal-queue-js');
-  queueModalBtnRef.addEventListener('click', e => {
-    console.log('Привет это в очереди');
-  });
+  // const queueModalBtnRef = document.getElementById('btnModal-queue-js');
+  // queueModalBtnRef.addEventListener('click', e => {
+  //   console.log('Привет это в очереди');
+  //   Queue();
+  // });
 }
 
+function Queue() {
+  let filmQueueMass = [];
+  localStorage.setItem('filmsQueue', JSON.stringify(filmQueueMass));
+  let localStorageData = localStorage.getItem('filmsQueue');
+  console.log(localStorageData);
+
+  if (localStorageData !== null) {
+    filmQueueMass.push(...JSON.parse(localStorageData));
+  }
+}
+//===========================================================================================================
 function onCloseModal() {
   window.removeEventListener('keydown', onPressEscape);
   backDropRef.classList.remove('is-open');
