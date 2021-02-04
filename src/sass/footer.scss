@@ -1,10 +1,11 @@
 .footer_section {
-  background-color: #f7f7f7;
+  background-color: $primary-white-color;
 }
 
 .footer_container {
   margin-left: auto;
   margin-right: auto;
+  color: $footer-text-color;
 }
 
 @media (min-width: 320px) {
@@ -44,7 +45,6 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
-  color: #545454;
 }
 
 // link styles
@@ -82,6 +82,8 @@
   background: transparent;
   outline: none;
   border: none;
-  border-bottom: 0.5px solid #545454;
-  color: #545454;
+
+  border-bottom: 0.5px solid $footer-text-color;
+  color: $footer-text-color;
+   cursor: pointer;
 }

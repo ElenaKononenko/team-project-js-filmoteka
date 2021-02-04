@@ -21,8 +21,15 @@ html {
   src: local(''), url('../fonts/roboto-bold.ttf') format('truetype');
   /* Modern Browsers */
 }
+$primary-text-color: #000000;
+$secondary-text-color: #8c8c8c;
+$accent-color: #ff6b08;
+$primary-white-color: #f7f7f7;
+$footer-text-color: #545454;
+$white-color: #ffffff;
+
 body {
-  color: #000000;
+  color: $primary-text-color;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -64,6 +71,10 @@ body {
     margin: 0%;
     padding: 0;
     padding-bottom: 30px;
+  }
+  .container.container__modalAuth {
+    padding: 20px;
+    width: 300px;
   }
 }
 

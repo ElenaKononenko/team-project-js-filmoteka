@@ -1,10 +1,93 @@
+//modal Auth
+.modalAuth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 500px;
+  left: auto;
+
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modalAuth.is-open {
+  opacity: 1;
+  pointer-events: initial;
+
+  .overlay__modalAuth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(161, 33, 33, 0.9);
+  }
+  .container__modalAuth {
+    background: $primary-white-color;
+    z-index: 10;
+    height: 400px;
+    border-radius: 2%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+.container__modalAuth__form {
+  text-align: center;
+}
+.container__modalAuth__form__email,
+.container__modalAuth__form__password {
+  display: block;
+  height: 35px;
+  border: solid 1px $primary-text-color;
+  margin: auto;
+  margin-top: 10px;
+
+  text-align: center;
+  &:hover,
+  &:focus {
+    border: solid 2px $accent-color;
+  }
+}
+// .container__modalAuth__form__btn,
+.container__modalAuth__btn {
+  display: block;
+  width: 100px;
+  height: 35px;
+  left: 678px;
+  top: 642px;
+  border: 1px solid $primary-text-color;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  font-family: Roboto;
+  font-style: normal;
+
+  font-size: 12px;
+  line-height: 1.33;
+  color: $primary-text-color;
+  outline: none;
+  border: 1px solid $primary-text-color;
+  cursor: pointer;
+  margin-top: 20px;
+  &:hover,
+  &:focus {
+    border: solid 2px $accent-color;
+    background-color: $accent-color;
+  }
+}
+//
+
 .js-modal {
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
 
   width: 100vw;
   height: 100vh;
@@ -25,7 +108,7 @@
     background-color: rgba(0, 0, 0, 0.9);
   }
   .modalCard {
-    background: #f7f5f5;
+    background: $primary-white-color;
     z-index: 10;
     border-radius: 2%;
   }
@@ -34,7 +117,6 @@
 @media (min-width: 320px) {
   .modalImg {
     width: 280px;
-    height: 300px;
     padding-top: 20px;
     border-radius: 2%;
   }
@@ -58,7 +140,6 @@
 @media (min-width: 768px) {
   .modalImg {
     width: 294px;
-    height: 416px;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
@@ -99,35 +180,6 @@
 @media (min-width: 1024px) {
   .modalImg {
     width: 426px;
-    height: 514px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 30px;
-    border-radius: 2%;
-  }
-
-  .modal_title {
-    padding-top: 30px;
-    font-size: 30px;
-    line-height: 35px;
-  }
-  .description {
-    display: block;
-  }
-
-  table {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .overview {
-    padding-top: 20px;
-    padding-right: 70px;
-    padding-bottom: 20px;
-    font-size: 14px;
-  }
-  .container.modalCard {
-    display: flex;
   }
   .btn-modal {
     margin-right: 20px;
@@ -151,22 +203,22 @@ td {
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
-  color: #8c8c8c;
+  color: $secondary-text-color;
 }
 .modal_title {
   font-weight: 500;
-  color: #000000;
+  color: $primary-text-color;
   text-transform: uppercase;
 }
 .overview {
   font-weight: 500;
 
   line-height: 20px;
-  color: #000000;
+  color: $primary-text-color;
 }
 
 .definition.info {
-  color: #000000;
+  color: $primary-text-color;
 }
 
 .info.originalTitle {
@@ -181,8 +233,8 @@ td {
   width: 36px;
   height: 16px;
   border-radius: 5px;
-  background-color: #ff6b01;
-  color: white;
+  background-color: $accent-color;
+  color: $white-color;
 }
 
 .btn-modal {
@@ -190,7 +242,7 @@ td {
   height: 44px;
   left: 678px;
   top: 642px;
-  border: 1px solid #000000;
+  border: 1px solid $primary-text-color;
   box-sizing: border-box;
   border-radius: 5px;
 
@@ -199,15 +251,15 @@ td {
 
   font-size: 12px;
   line-height: 1.33;
-  color: black;
+  color: $primary-text-color;
   outline: none;
-  border: 1px solid black;
+  border: 1px solid $primary-text-color;
   cursor: pointer;
 }
 
 .btn-modal-isListed {
-  background-color: #ff6b01;
-  border: 1px solid #ff6b01;
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
   color: #fff;
   width: 136px;
   height: 44px;
