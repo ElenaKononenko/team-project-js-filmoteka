@@ -23,9 +23,6 @@
 
 console.log('Hello page5');
 
-let filmsWatched = [];
-let filmsQueue = [];
-
 const q = {
   name: 'mango',
   id: 123,
@@ -68,6 +65,8 @@ const homeHeader = document.getElementById('homeHeader');
 const libaryHeader = document.getElementById('libraryHeader');
 const libraryLink = document.getElementById('libraryLink');
 const homeLink = document.getElementById('homeLink');
+
+console.log(homeSection);
 
 libraryLink.addEventListener('click', e => {
   console.log(e.target);
