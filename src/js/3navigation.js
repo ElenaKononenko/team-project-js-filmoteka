@@ -4,12 +4,15 @@ const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
 
 function activeDetailsPage(movie) {
+  console.log(movie);
   backDropRef.classList.add('is-open');
   showDetails(movie);
   window.addEventListener('keydown', onPressEscape);
   overlayRef.addEventListener('click', onBackDropClick);
 }
 
+// console.log(fetchPopularMoviesList());
+// console.log(renderFilms);
 function showDetails({
   poster_path: imgPath,
   title: filmTitle,
@@ -53,6 +56,7 @@ function showDetails({
 
   modalCard.insertAdjacentHTML('afterbegin', modalCardinfo);
 
+  //! Кнопки на добавление в очередь и просмотренные
   const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
   watchedModalBtnRef.addEventListener('click', e => {
     console.log('Привет это просмотренные');
@@ -61,9 +65,21 @@ function showDetails({
   const queueModalBtnRef = document.getElementById('btnModal-queue-js');
   queueModalBtnRef.addEventListener('click', e => {
     console.log('Привет это в очереди');
+    Queue();
   });
 }
 
+function Queue() {
+  let filmQueueMass = [];
+  localStorage.setItem('filmsQueue', JSON.stringify(filmQueueMass));
+  let localStorageData = localStorage.getItem('filmsQueue');
+  console.log(localStorageData);
+
+  if (localStorageData !== null) {
+    filmQueueMass.push(...JSON.parse(localStorageData));
+  }
+}
+//===========================================================================================================
 function onCloseModal() {
   window.removeEventListener('keydown', onPressEscape);
   backDropRef.classList.remove('is-open');
