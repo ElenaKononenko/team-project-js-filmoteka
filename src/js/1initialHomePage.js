@@ -32,6 +32,7 @@ const refs = {
 };
 fetchGenres();
 startFetch();
+console.log();
 
 function fetchGenres() {
   return fetch(
@@ -51,7 +52,9 @@ function fetchPopularMoviesList() {
     .then(res => res.json())
     .then(data => {
       renderFilms = data.results;
+
       let totalPages = data.total_pages;
+      //console.log(renderFilms);
       if (pageNumber >= totalPages) {
         refs.nextBtn.classList.add('btnIsHidden');
       } else {
@@ -72,6 +75,7 @@ function fetchPopularMoviesList() {
 
 function createCardFunc(movie) {
   const listItem = cardTemplate(movie);
+
   listItem.addEventListener('click', () => {
     activeDetailsPage(movie);
   });
