@@ -75,7 +75,7 @@ function readQueueLocalStorage() {
 }
 
 // Меняет Хедер по нажатию на myLibrary
-const homeeSection = document.querySelector('#home-section')
+const homeSection = document.querySelector('#home-section')
 const homeHeader =  document.getElementById('homeHeader');
 const libaryHeader = document.getElementById('libraryHeader');
 const libraryLink = document.getElementById('libraryLink');
@@ -87,7 +87,7 @@ libraryLink.addEventListener('click', (e) => {
   console.log(e.target);
 
   homeHeader.classList.add('visually-hidden');
-  homeeSection.classList.add('visually-hidden');
+  homeSection.classList.add('visually-hidden');
   libaryHeader.classList.remove('visually-hidden');
 
   libraryLink.classList.add('current');
