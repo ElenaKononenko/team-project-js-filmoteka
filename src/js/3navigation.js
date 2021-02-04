@@ -2,6 +2,10 @@ console.log('Hello from 3navigation');
 const modalCard = document.querySelector('.modalCard');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
+const team = document.querySelector('.button_footer');
+const heroes = document.querySelector('.heroes');
+// const teamBackDropRef = document.querySelector('.js-teamModal');
+// const teamOverlayRef = document.querySelector('.teamOverlay');
 
 function activeDetailsPage(movie) {
   backDropRef.classList.add('is-open');
@@ -98,3 +102,13 @@ function genreStringModal(genre) {
     }, '')
     .slice(0, -2);
 }
+///////////////////
+team.addEventListener('click', teamCard);
+
+function teamCard() {
+  backDropRef.classList.add('is-open');
+  window.addEventListener('keydown', onPressEscape);
+  overlayRef.addEventListener('click', onBackDropClick);
+}
+
+////////////////////////
