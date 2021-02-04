@@ -73,3 +73,24 @@ function readQueueLocalStorage() {
   const parsedSettings = JSON.parse(savedSettings);
   parsedSettings.map(e => console.log(e));
 }
+
+// Меняет Хедер по нажатию на myLibrary
+const homeSection = document.querySelector('#home-section')
+const homeHeader =  document.getElementById('homeHeader');
+const libaryHeader = document.getElementById('libraryHeader');
+const libraryLink = document.getElementById('libraryLink');
+const homeLink = document.getElementById('homeLink');
+
+
+
+libraryLink.addEventListener('click', (e) => {
+  console.log(e.target);
+
+  homeHeader.classList.add('visually-hidden');
+  homeSection.classList.add('visually-hidden');
+  libaryHeader.classList.remove('visually-hidden');
+
+  libraryLink.classList.add('current');
+  homeLink.classList.remove('current');
+});
+

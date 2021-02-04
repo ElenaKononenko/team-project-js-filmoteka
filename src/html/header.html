@@ -1,5 +1,5 @@
 <header>
-  <section class="header_section">
+  <section class="header_section" id="homeHeader">
     <div class="container header-container">
       <div>
         <nav class="navigation">
@@ -9,17 +9,16 @@
               <span class="span_logo">Filmoteka</span>
             </a>
           </div>
-
-          <div>
-            <ul class="header_link">
+            <ul class="header_link list">
               <li class="header_item head">
-                <a href="../index.html" class="header_li current">HOME</a>
+                <a href="../index.html" class="header_li current" id="homeLink">HOME</a>
               </li>
               <li class="header_item">
-                <a href="" class="header_li">MY LIBRARY</a>
+                <a href="#" class="header_li" id="libraryLink">MY LIBRARY</a>
               </li>
+              <li> <button class="btnAuth visually-hidden">Вход</button></li>
             </ul>
-          </div>
+          
         </nav>
       </div>
       <div class="form_input">
@@ -38,5 +37,39 @@
       </div>
       <p id="js-error" class="error"></p>
     </section>
+
+      <section class="header_section_library visually-hidden" id="libraryHeader">
+        <div class="container header-container">
+      
+          <div>
+            <nav class="navigation">
+              <div>
+                <a href="../index.html" class="logo">
+                  <img src="./images/film.svg" alt="Logo" class="img-logo">
+                  <span class="span_logo">Filmoteka</span>
+                </a>
+              </div>
+      
+              <div>
+                <ul class="header_link list">
+                  <li class="header_item head"><a href="../index.html" class="header_li">HOME</a></li>
+
+                <li class="header_item"><a href="#" class="header_li current">MY LIBRARY</a></li>
+                <li><button class="btnAuthLibrary visually-hidden">Вход</button></li>
+
+
+                </ul>
+              </div>
+            </nav>
+          </div>
+      
+          <div class="flex_button">
+            <button class="button button-watched">WATCHED</button>
+            <button class="button button-queue">QUEUE</button>
+          </div>
+      
+        </div>
+      
+      </section>
   </header>
 
