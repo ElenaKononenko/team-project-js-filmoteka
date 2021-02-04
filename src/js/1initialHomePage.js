@@ -184,28 +184,29 @@ formAuth.addEventListener('submit', event => {
   console.log(email, password);
   signInWithEmailPassword(email, password);
 });
+//запись мыла и пароля
+function signUpWithEmailPasswoerd() {
+  // var email = 'test@example.com';
+  // var password = 'hunter2';
+  // [START auth_signup_password]
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      console.log('успешно записан');
 
-// function signUpWithEmailPasswoerd() {
-//   // var email = 'test@example.com';
-//   // var password = 'hunter2';
-//   // [START auth_signup_password]
-//   firebase
-//     .auth()
-//     .createUserWithEmailAndPassword(email, password)
-//     .then(userCredential => {
-//       console.log('успешно записан');
-
-//       var user = userCredential.user;
-//       // ...
-//     })
-//     .catch(error => {
-//       alert('уже есть такой');
-//       var errorCode = error.code;
-//       var errorMessage = error.message;
-//       // ..
-//     });
-//   // [END auth_signup_password]
-// }
+      var user = userCredential.user;
+      // ...
+    })
+    .catch(error => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ..
+    });
+  // [END auth_signup_password]
+}
 
 //функция для входа
 function signInWithEmailPassword() {
