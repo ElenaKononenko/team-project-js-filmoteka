@@ -2,10 +2,6 @@ console.log('Hello from 3navigation');
 const modalCard = document.querySelector('.modalCard');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
-const team = document.querySelector('.button_footer');
-const heroes = document.querySelector('.heroes');
-// const teamBackDropRef = document.querySelector('.js-teamModal');
-// const teamOverlayRef = document.querySelector('.teamOverlay');
 
 function activeDetailsPage(movie) {
   console.log(movie);
@@ -118,13 +114,34 @@ function genreStringModal(genre) {
     }, '')
     .slice(0, -2);
 }
-///////////////////
-team.addEventListener('click', teamCard);
 
-function teamCard() {
-  backDropRef.classList.add('is-open');
-  window.addEventListener('keydown', onPressEscape);
-  overlayRef.addEventListener('click', onBackDropClick);
+//модальное окно на кнопку GoIT Students
+const teamModal = document.querySelector('.js-teamModal');
+const teamOverlay = document.querySelector('.teamOverlay');
+const teamBtn = document.querySelector('.button_footer');
+const team = document.querySelector('.team-container');
+
+teamBtn.addEventListener('click', onOpenModalTeam);
+
+function onOpenModalTeam() {
+  teamModal.classList.add('is-open');
+  window.addEventListener('keydown', onPressEscapeTeam);
+  teamOverlay.addEventListener('click', onBackDropClickTeam);
+  console.log(teamOverlay);
 }
 
-////////////////////////
+function onCloseModalTeam() {
+  window.removeEventListener('keydown', onPressEscapeTeam);
+  teamModal.classList.remove('is-open');
+}
+
+function onBackDropClickTeam(event) {
+  if (event.target === event.currentTarget) {
+    onCloseModalTeam();
+  }
+}
+function onPressEscapeTeam(event) {
+  if (event.code === 'Escape') {
+    onCloseModalTeam();
+  }
+}
