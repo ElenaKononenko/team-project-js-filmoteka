@@ -4,11 +4,11 @@ const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
 
 function activeDetailsPage(movie) {
-  console.log(movie);
+  //console.log(movie);
   backDropRef.classList.add('is-open');
   showDetails(movie);
   const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
-  // watchedModalBtnRef.addEventListener('click', toggleToWatched);
+  watchedModalBtnRef.addEventListener('click', toggleToWatched);
 
   const queueModalBtnRef = document.getElementById('btnModal-queue-js');
   queueModalBtnRef.addEventListener('click', toggleToQueue);
