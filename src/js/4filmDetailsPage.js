@@ -8,8 +8,18 @@ const addToWatched = document.querySelector('.btn-modal'); //? Кнопки на
 
 let filmsWatched = [];
 let filmsQueue = [];
-let QUEUE = false;
-const WATCHED = false;
+//let QUEUE = false;
+function getFilm(data) {
+  console.log(data);
+  data.find(el => {
+    console.log(el);
+    let less;
+  });
+}
+
+const interest = { QUEUE: false, WATCHED: false };
+//const WATCHED = false;
+//todo: начало нашего варианта  варианта =================================================================
 function toggleToQueue(e) {
   e.preventDefault();
   const currentFilmId = e.currentTarget.dataset.id;
@@ -23,18 +33,22 @@ function toggleToQueue(e) {
   let findFilm = filmsQueue.find(el => {
     return el.id === currentFilmId;
   });
+  console.log(findFilm);
   if (findFilm === undefined) {
-    findFilm = { test1, id: currentFilmId };
+    console.log(findFilm);
+    findFilm = { id: currentFilmId }; //todo: убрал из объекта test
   }
 
   const test = Object.keys(findFilm);
-  console.log(!QUEUE);
-  test.forEach(el => {
-    findFilm.test1 = !QUEUE;
-    QUEUE = !QUEUE;
-  });
 
-  findFilm.QUEUE = !findFilm[QUEUE];
+  test.forEach(el => {
+    //где-то тут проблема
+
+    findFilm.QUEUE = !interest.QUEUE;
+
+    findFilm.interest = !interest.QUEUE;
+    interest.QUEUE = !interest.QUEUE;
+  });
 
   let mass = { ...findFilm };
 
@@ -49,9 +63,45 @@ function toggleToQueue(e) {
 
   localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
 }
+//! Функция на кнопку toWatched ================================================
+function toggleToWatched(e) {
+  e.preventDefault();
+  const currentFilmId = e.currentTarget.dataset.id;
+  const savedSettings = localStorage.getItem('filmsQueue');
+  const parsedSettings = JSON.parse(savedSettings);
 
-// function toggleToWatched(film) {
-//   filmsWatched.push(film);
-//   console.log(filmsWatched);
-//   localStorage.setItem('filmsWatched', JSON.stringify(filmsWatched));
-// }
+  filmsWatched = parsedSettings; // todo: Надо мапать , и в мапе прописать логику
+  if (filmsWatched === null) {
+    filmsWatched = [];
+  }
+  let nextFilm = filmsWatched.find(el => {
+    return el.id === currentFilmId;
+  });
+  //console.log(findFilm);
+  if (nextFilm === undefined) {
+    nextFilm = { id: currentFilmId }; //todo: убрал из объекта test
+  }
+
+  const test = Object.keys(nextFilm);
+
+  // console.log(!filmsWatched);
+  test.forEach(el => {
+    nextFilm.test1 = !filmsWatched;
+    filmsWatched = !filmsWatched;
+  });
+
+  nextFilm.QUEUE = !nextFilm[filmsWatched];
+
+  let massiv = { ...nextFilm };
+
+  const findIndex = filmsWatched.findIndex(el => {
+    return el.id === currentFilmId;
+  });
+  if (findIndex === -1) {
+    filmsWatched.push(massiv);
+  } else {
+    filmsWatched.splice(findIndex, 1, massiv);
+  }
+
+  localStorage.setItem('filmsQueue', JSON.stringify(filmsWatched));
+}

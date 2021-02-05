@@ -67,6 +67,11 @@ function fetchPopularMoviesList() {
         cardsFragment.appendChild(createCardFunc(el));
       });
       list.appendChild(cardsFragment);
+      return data;
+    })
+    .then(data => {
+      getFilm(data);
+      //console.log(data);
     })
     .catch(error => {
       errorPlug();
