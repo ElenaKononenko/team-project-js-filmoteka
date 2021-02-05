@@ -114,3 +114,34 @@ function genreStringModal(genre) {
     }, '')
     .slice(0, -2);
 }
+
+//модальное окно на кнопку GoIT Students
+const teamModal = document.querySelector('.js-teamModal');
+const teamOverlay = document.querySelector('.teamOverlay');
+const teamBtn = document.querySelector('.button_footer');
+const team = document.querySelector('.team-container');
+
+teamBtn.addEventListener('click', onOpenModalTeam);
+
+function onOpenModalTeam() {
+  teamModal.classList.add('is-open');
+  window.addEventListener('keydown', onPressEscapeTeam);
+  teamOverlay.addEventListener('click', onBackDropClickTeam);
+  console.log(teamOverlay);
+}
+
+function onCloseModalTeam() {
+  window.removeEventListener('keydown', onPressEscapeTeam);
+  teamModal.classList.remove('is-open');
+}
+
+function onBackDropClickTeam(event) {
+  if (event.target === event.currentTarget) {
+    onCloseModalTeam();
+  }
+}
+function onPressEscapeTeam(event) {
+  if (event.code === 'Escape') {
+    onCloseModalTeam();
+  }
+}
