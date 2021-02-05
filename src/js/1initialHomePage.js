@@ -32,6 +32,7 @@ const refs = {
 };
 fetchGenres();
 startFetch();
+console.log();
 
 function fetchGenres() {
   return fetch(
@@ -51,7 +52,9 @@ function fetchPopularMoviesList() {
     .then(res => res.json())
     .then(data => {
       renderFilms = data.results;
+
       let totalPages = data.total_pages;
+      //console.log(renderFilms);
       if (pageNumber >= totalPages) {
         refs.nextBtn.classList.add('btnIsHidden');
       } else {
@@ -72,6 +75,7 @@ function fetchPopularMoviesList() {
 
 function createCardFunc(movie) {
   const listItem = cardTemplate(movie);
+
   listItem.addEventListener('click', () => {
     activeDetailsPage(movie);
   });
@@ -159,6 +163,7 @@ function startFetch() {
 }
 
 //authorization
+
 const formAuth = document.querySelector('.container__modalAuth__form');
 const inputEmail = document.querySelector('.container__modalAuth__form__email');
 const inputRassword = document.querySelector(
@@ -184,7 +189,9 @@ formAuth.addEventListener('submit', event => {
   console.log(email, password);
   signInWithEmailPassword(email, password);
 });
+
 //запись мыла и пароля
+
 function signUpWithEmailPasswoerd() {
   // var email = 'test@example.com';
   // var password = 'hunter2';
@@ -209,6 +216,7 @@ function signUpWithEmailPasswoerd() {
 }
 
 //функция для входа
+
 function signInWithEmailPassword() {
   firebase
     .auth()

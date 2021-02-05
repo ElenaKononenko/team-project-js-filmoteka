@@ -23,9 +23,6 @@
 
 console.log('Hello page5');
 
-let filmsWatched = [];
-let filmsQueue = [];
-
 const q = {
   name: 'mango',
   id: 123,
@@ -75,22 +72,19 @@ function readQueueLocalStorage() {
 }
 
 // Меняет Хедер по нажатию на myLibrary
-const homeeSection = document.querySelector('#home-section')
-const homeHeader =  document.getElementById('homeHeader');
+const homeSection = document.querySelector('#home-section');
+const homeHeader = document.getElementById('homeHeader');
 const libaryHeader = document.getElementById('libraryHeader');
 const libraryLink = document.getElementById('libraryLink');
 const homeLink = document.getElementById('homeLink');
 
-
-
-libraryLink.addEventListener('click', (e) => {
+libraryLink.addEventListener('click', e => {
   console.log(e.target);
 
   homeHeader.classList.add('visually-hidden');
-  homeeSection.classList.add('visually-hidden');
+  homeSection.classList.add('visually-hidden');
   libaryHeader.classList.remove('visually-hidden');
 
   libraryLink.classList.add('current');
   homeLink.classList.remove('current');
 });
-

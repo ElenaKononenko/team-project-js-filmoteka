@@ -4,12 +4,20 @@ const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
 
 function activeDetailsPage(movie) {
+  console.log(movie);
   backDropRef.classList.add('is-open');
   showDetails(movie);
+  const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
+  // watchedModalBtnRef.addEventListener('click', toggleToWatched);
+
+  const queueModalBtnRef = document.getElementById('btnModal-queue-js');
+  queueModalBtnRef.addEventListener('click', toggleToQueue);
   window.addEventListener('keydown', onPressEscape);
   overlayRef.addEventListener('click', onBackDropClick);
 }
 
+// console.log(fetchPopularMoviesList());
+// console.log(renderFilms);
 function showDetails({
   poster_path: imgPath,
   title: filmTitle,
@@ -19,6 +27,7 @@ function showDetails({
   original_title: originalTitle,
   genre_ids: genre,
   overview: description,
+  id: movieId,
 }) {
   const modalCardinfo = `<img class="modalImg"
                     src='${basicPosterUrl}${imgPath}'
@@ -46,24 +55,38 @@ function showDetails({
 </table>
 <h2 class="about">ABOUT</h2>
 <p class="overview">${description}</p>
-<button id="btnModal-watched-js" class="btn-modal">
+<button id="btnModal-watched-js"  data-id=${movieId} class="btn-modal" >
       ADD TO WATCHED
     </button>
-    <button id="btnModal-queue-js" class="btn-modal">ADD TO QUEUE</button></div>`;
+    <button id="btnModal-queue-js" class="btn-modal" data-id=${movieId}>ADD TO QUEUE</button></div>`;
 
   modalCard.insertAdjacentHTML('afterbegin', modalCardinfo);
 
-  const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
-  watchedModalBtnRef.addEventListener('click', e => {
-    console.log('Привет это просмотренные');
-  });
+  //! Кнопки на добавление в очередь и просмотренные
+  //   const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
+  //   watchedModalBtnRef.addEventListener('click', e => {
+  //     console.log('Привет это просмотренные');
+  //   });
 
-  const queueModalBtnRef = document.getElementById('btnModal-queue-js');
-  queueModalBtnRef.addEventListener('click', e => {
-    console.log('Привет это в очереди');
-  });
+  //   const queueModalBtnRef = document.getElementById('btnModal-queue-js');
+  //   queueModalBtnRef.addEventListener('click', e => {
+  //     console.log('Привет это в очереди');
+  //     Queue();
+  //   });
 }
 
+function Queue() {
+  let filmQueueMass = [];
+  localStorage.setItem('filmsQueue', JSON.stringify(filmQueueMass));
+  let localStorageData = localStorage.getItem('filmsQueue');
+  console.log(localStorageData);
+
+  if (localStorageData !== null) {
+    filmQueueMass.push(...JSON.parse(localStorageData));
+  }
+}
+
+//===========================================================================================================
 function onCloseModal() {
   window.removeEventListener('keydown', onPressEscape);
   backDropRef.classList.remove('is-open');
@@ -97,4 +120,35 @@ function genreStringModal(genre) {
       );
     }, '')
     .slice(0, -2);
+}
+
+//модальное окно на кнопку GoIT Students
+const teamModal = document.querySelector('.js-teamModal');
+const teamOverlay = document.querySelector('.teamOverlay');
+const teamBtn = document.querySelector('.button_footer');
+const team = document.querySelector('.team-container');
+
+teamBtn.addEventListener('click', onOpenModalTeam);
+
+function onOpenModalTeam() {
+  teamModal.classList.add('is-open');
+  window.addEventListener('keydown', onPressEscapeTeam);
+  teamOverlay.addEventListener('click', onBackDropClickTeam);
+  console.log(teamOverlay);
+}
+
+function onCloseModalTeam() {
+  window.removeEventListener('keydown', onPressEscapeTeam);
+  teamModal.classList.remove('is-open');
+}
+
+function onBackDropClickTeam(event) {
+  if (event.target === event.currentTarget) {
+    onCloseModalTeam();
+  }
+}
+function onPressEscapeTeam(event) {
+  if (event.code === 'Escape') {
+    onCloseModalTeam();
+  }
 }
