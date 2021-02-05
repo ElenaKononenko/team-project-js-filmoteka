@@ -70,6 +70,7 @@ function fetchPopularMoviesList() {
     })
     .catch(error => {
       errorPlug();
+      refs.nextBtn.classList.add('btnIsHidden');
     });
 }
 
@@ -171,48 +172,67 @@ const inputRassword = document.querySelector(
 );
 const btnAuth = document.querySelector('.btnAuth');
 const btnAuthLibrary = document.querySelector('.btnAuthLibrary');
+
 const btnIn = document.querySelector('.in');
 const btnRegister = document.querySelector('.register');
-const btnEnter = document.querySelector('.enter');
+// const btnEnter = document.querySelector('.enter');
 const modalAuth = document.getElementById('js_modalAuth');
 const overlayAuth = document.getElementById('overlay__modalAuth');
+const authError = document.querySelector('.auth__text');
 
 btnAuth.addEventListener('click', onOpenModalAuth);
 btnAuthLibrary.addEventListener('click', onOpenModalAuth);
+
 let email = '';
 let password = '';
 
-formAuth.addEventListener('submit', event => {
+// formAuth.addEventListener('submit', event => {
+//   event.preventDefault();
+//   email = event.currentTarget.email.value;
+//   password = event.currentTarget.parol.value;
+//   console.log(email, password);
+//   signInWithEmailPassword(email, password);
+// });
+
+//кнопка вход
+btnIn.addEventListener('click', event => {
   event.preventDefault();
-  email = event.currentTarget.email.value;
-  password = event.currentTarget.parol.value;
+  email = inputEmail.value;
+  password = inputRassword.value;
   console.log(email, password);
   signInWithEmailPassword(email, password);
 });
 
-//запись мыла и пароля
+//кнопка регистрации
+btnRegister.addEventListener('click', event => {
+  event.preventDefault();
+  email = inputEmail.value;
+  password = inputRassword.value;
+  console.log(email, password);
+  signUpWithEmailPasswoerd(email, password);
+});
+
+//ф-ция регистрация
 
 function signUpWithEmailPasswoerd() {
-  // var email = 'test@example.com';
-  // var password = 'hunter2';
-  // [START auth_signup_password]
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(userCredential => {
+      authError.classList.add('visually-hidden');
       console.log('успешно записан');
-
+      //сюда записать ссылку на библиотеку, где будет скрываться заглушка
       var user = userCredential.user;
-      // ...
+      console.log(user);
     })
     .catch(error => {
       var errorCode = error.code;
       var errorMessage = error.message;
+      authError.textContent = errorMessage;
+      authError.classList.remove('visually-hidden');
       console.log(errorCode);
       console.log(errorMessage);
-      // ..
     });
-  // [END auth_signup_password]
 }
 
 //функция для входа
@@ -223,8 +243,13 @@ function signInWithEmailPassword() {
     .signInWithEmailAndPassword(email, password)
     .then(userCredential => {
       var user = userCredential.user;
+      console.log(user);
+      authError.classList.add('visually-hidden');
       console.log(email, 'email есть в базе');
       console.log('входите');
+      authError.textContent = 'registration completed successfully';
+      authError.classList.remove('visually-hidden');
+      //сюда записать ссылку на библиотеку, где будет скрываться заглушка
       homeHeader.classList.add('visually-hidden');
       libaryHeader.classList.remove('visually-hidden');
       console.log(user.email);
@@ -233,6 +258,10 @@ function signInWithEmailPassword() {
     .catch(error => {
       var errorCode = error.code;
       var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      authError.textContent = errorMessage;
+      authError.classList.remove('visually-hidden');
       console.log(email, 'email нету в базе ,нужно зарегаться');
     });
   // [END auth_signin_password]
@@ -245,10 +274,7 @@ function onCloseModalAuth() {
 }
 
 function onBackDropClickAuth(event) {
-  console.log(event);
   if (event.target === event.currentTarget) {
-    console.log(event.target);
-    console.log(event.currentTarget);
     onCloseModalAuth();
   }
 }
@@ -262,5 +288,4 @@ function onOpenModalAuth() {
   window.addEventListener('keydown', onPressEscapeAuth);
 
   overlayAuth.addEventListener('click', onBackDropClickAuth);
-  console.log(overlayAuth);
 }
