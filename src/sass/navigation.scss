@@ -19,6 +19,63 @@
   pointer-events: initial;
 }
 
+  .overlay__modalAuth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(44, 42, 42, 0.9);
+  }
+  .container__modalAuth {
+    background: $primary-white-color;
+    z-index: 10;
+    height: 400px;
+    border-radius: 2%;
+    // text-align: center;
+    margin-bottom: 20px;
+    vertical-align: middle;
+    text-align: left;
+  }
+}
+
+.container__modal__title{
+  position: relative;
+  display: flex;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dedede;
+}
+
+
+.auth__title{
+      margin-right: 20px;
+    line-height: 30px;
+}
+
+.modal__title{
+  margin: 0 40px 0 0;
+   font-weight: 500;
+  color: $primary-text-color;
+    font-size: 15px;
+    font-weight: 150;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal__title:hover,
+.modal__title:focus{
+  color: $accent-color;
+}
+
+
+.modal__text{
+  margin-top: 10px;
+  font-size: 15px;
+  color: $primary-text-color;
+}
+
+
 .overlay__modalAuth,
 .teamOverlay {
   position: absolute;
@@ -42,18 +99,30 @@
 }
 .container__modalAuth__form__email,
 .container__modalAuth__form__password {
-  display: block;
-  height: 35px;
-  border: solid 1px $primary-text-color;
-  margin: auto;
-  margin-top: 10px;
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    width: 100%;
+    height: 40px;
+    background: #fff none;
+    line-height: 20px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color .2s,box-shadow .2s;
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.15));
+    outline: 0;
 
-  text-align: center;
-  &:hover,
   &:focus {
     border: solid 2px $accent-color;
   }
 }
+
+
+.container__modalAuth__form__btn {
+  width: 100%;
+
 .js-teamModal.is-open {
   opacity: 1;
   pointer-events: initial;
@@ -62,27 +131,28 @@
 .container__modalAuth__btn {
   display: block;
   width: 100px;
+
   height: 35px;
   left: 678px;
   top: 642px;
-  border: 1px solid $primary-text-color;
   box-sizing: border-box;
   border-radius: 5px;
+  background: $accent-color;
 
   font-family: Roboto;
   font-style: normal;
-
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.33;
-  color: $primary-text-color;
+  color: $white-color;
   outline: none;
-  border: 1px solid $primary-text-color;
+  border: 1px solid $accent-color;
   cursor: pointer;
   margin-top: 20px;
+
   &:hover,
   &:focus {
-    border: solid 2px $accent-color;
-    background-color: $accent-color;
+    border: solid 2px orangered;
+    background-color: orangered;
   }
 }
 //
@@ -400,3 +470,7 @@ td {
   outline: none;
   cursor: pointer;
 }
+
+
+
+
