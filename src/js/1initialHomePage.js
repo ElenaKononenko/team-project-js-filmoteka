@@ -24,6 +24,12 @@ let renderFilms = [];
 let genres = [];
 let currentPageNumber = document.getElementById('js-currentPageNumber');
 const list = document.querySelector('.galleryHome');
+const homeSection = document.querySelector('#home-section');
+const librarySection = document.querySelector('#library-section');
+const homeHeader = document.getElementById('homeHeader');
+const libaryHeader = document.getElementById('libraryHeader');
+const libraryLink = document.getElementById('libraryLink');
+const homeLink = document.getElementById('homeLink');
 const refs = {
   searchForms: document.getElementById('js-search-form'),
   backBtn: document.getElementById('js-backBtn'),
@@ -33,6 +39,8 @@ const refs = {
 authStateListener();
 fetchGenres();
 startFetch();
+
+homeLink.addEventListener('click', onHomelink);
 
 function fetchGenres() {
   return fetch(
@@ -323,4 +331,13 @@ function onOpenModalAuth() {
   window.addEventListener('keydown', onPressEscapeAuth);
 
   overlayAuth.addEventListener('click', onBackDropClickAuth);
+}
+function onHomelink() {
+  homeHeader.classList.remove('visually-hidden');
+  homeSection.classList.remove('visually-hidden');
+  librarySection.classList.add('visually-hidden');
+  libaryHeader.classList.add('visually-hidden');
+
+  libraryLink.classList.remove('current');
+  homeLink.classList.add('current');
 }
