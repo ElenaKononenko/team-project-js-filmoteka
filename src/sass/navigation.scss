@@ -79,7 +79,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(161, 33, 33, 0.9);
 }
 .container__modalAuth {
   background: $primary-white-color;
@@ -92,6 +91,11 @@
 
 .container__modalAuth__form {
   text-align: center;
+}
+.wrapplerr__modalAuth__form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .container__modalAuth__form__email,
 .container__modalAuth__form__password {
@@ -118,11 +122,19 @@
 .container__modalAuth__form__btn {
   width: 100%;
 }
-
+.container__modalAuth__form__title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+}
+.auth__text {
+  padding: 15px 10px;
+}
 .js-teamModal.is-open {
   opacity: 1;
   pointer-events: initial;
 }
+
 // .container__modalAuth__form__btn,
 .container__modalAuth__btn {
   display: block;
@@ -171,6 +183,7 @@
 .js-modal.is-open {
   opacity: 1;
   pointer-events: initial;
+  z-index: 500;
 
   .overlay {
     position: absolute;
