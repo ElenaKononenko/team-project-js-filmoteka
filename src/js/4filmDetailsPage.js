@@ -22,6 +22,10 @@ let selectedMovieListKey = moviesWatchedKeyName;
 
 function initModalDialogButton(movieListKey, buttonId, movie) {
   const buttonElement = document.getElementById(buttonId);
+  if (!loggedIn) {
+    buttonElement.classList.add('visually-hidden');
+    return;
+  }
 
   if (!isMovieAddedToList(movieListKey, movie.id)) {
     buttonElement.classList.add(selectedClassName);
@@ -107,6 +111,6 @@ function rerenderPageWithMovies(movieListKey) {
   listElement.appendChild(cardsFragment);
 }
 
-// function onLibraryPageLoad() {
-//   renderMovies(selectedMovieListKey);
-// }
+function onLibraryPageLoad() {
+  rerenderPageWithMovies(selectedMovieListKey);
+}
