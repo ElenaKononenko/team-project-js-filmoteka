@@ -26,8 +26,10 @@ function activeDetailsPage(movie) {
   const watchedModalBtnRef = document.getElementById('btnModal-watched-js');
 
   queueModalBtnRef.addEventListener('click', e => {
-    // Queue();
-    toggleToQueue(movie);
+    // Queue(movie);
+    // toggleToQueue(movie);
+    filmsQueue.push(movie);
+    localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
   });
   watchedModalBtnRef.addEventListener('click', e => {
     toggleToWatched(movie);
@@ -92,7 +94,7 @@ function showDetails({
   // });
 }
 
-function Queue() {
+function Queue(movie) {
   let filmQueueMass = [];
   localStorage.setItem('filmsQueue', JSON.stringify(filmQueueMass));
   let localStorageData = localStorage.getItem('filmsQueue');

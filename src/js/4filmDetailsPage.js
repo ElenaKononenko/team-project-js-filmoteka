@@ -13,12 +13,27 @@ function monitorButtonStatusText() {
 }
 
 let filmsWatched = [];
-let filmsQueue = [];
+let filmsQueue = localStorage.getItem('filmsQueue')
+  ? JSON.parse(localStorage.getItem('filmsQueue'))
+  : [];
+
+localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
+const data = JSON.parse(localStorage.getItem('filmsQueue'));
 
 function toggleToQueue(film) {
-  const savedSettings = localStorage.getItem('filmsQueue');
+  let parsedSettings = JSON.parse(localStorage.getItem('filmsQueue'));
+  if (parsedSettings !== []) {
+    const mapParse = parsedSettings.map(e => {
+      console.log(e);
+      filmsQueue.push(e);
+    });
+  } else {
+    console.log(`пУстой`);
+  }
+
   filmsQueue.push(film);
-  filmsQueue.forEach(e => console.log(`добавил фильм c ${e.id}`));
+  localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
+  //   filmsQueue.forEach(e => console.log(`добавил фильм c ${e.id}`));
 
   //   if (savedSettings !== []) {
   //     filmsQueue.push(film);
@@ -27,8 +42,7 @@ function toggleToQueue(film) {
   //     console.log('пустой масив');
   //   }
 
-  console.log(filmsQueue);
-  localStorage.setItem('filmsQueue', JSON.stringify(filmsQueue));
+  //   console.log(filmsQueue);
 }
 
 function toggleToWatched(film) {
