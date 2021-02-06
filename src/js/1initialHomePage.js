@@ -30,9 +30,9 @@ const refs = {
   nextBtn: document.getElementById('js-nextBtn'),
   error: document.getElementById('js-error'),
 };
+authStateListener();
 fetchGenres();
 startFetch();
-console.log();
 
 function fetchGenres() {
   return fetch(
@@ -54,7 +54,7 @@ function fetchPopularMoviesList() {
       renderFilms = data.results;
 
       let totalPages = data.total_pages;
-      //console.log(renderFilms);
+
       if (pageNumber >= totalPages) {
         refs.nextBtn.classList.add('btnIsHidden');
       } else {
@@ -67,9 +67,15 @@ function fetchPopularMoviesList() {
         cardsFragment.appendChild(createCardFunc(el));
       });
       list.appendChild(cardsFragment);
+      return data;
+    })
+    .then(data => {
+      getFilm(data);
+      //console.log(data);
     })
     .catch(error => {
       errorPlug();
+      refs.nextBtn.classList.add('btnIsHidden');
     });
 }
 
@@ -171,84 +177,139 @@ const inputRassword = document.querySelector(
 );
 const btnAuth = document.querySelector('.btnAuth');
 const btnAuthLibrary = document.querySelector('.btnAuthLibrary');
+
 const btnIn = document.querySelector('.in');
 const btnRegister = document.querySelector('.register');
-const btnEnter = document.querySelector('.enter');
+const btnExit = document.querySelector('.exit');
+
+// const btnEnter = document.querySelector('.enter');
 const modalAuth = document.getElementById('js_modalAuth');
 const overlayAuth = document.getElementById('overlay__modalAuth');
+const authError = document.querySelector('.auth__text');
 
 btnAuth.addEventListener('click', onOpenModalAuth);
 btnAuthLibrary.addEventListener('click', onOpenModalAuth);
-let email = '';
-let password = '';
 
-formAuth.addEventListener('submit', event => {
+//кнопка вход
+btnIn.addEventListener('click', event => {
   event.preventDefault();
-  email = event.currentTarget.email.value;
-  password = event.currentTarget.parol.value;
-  console.log(email, password);
-  signInWithEmailPassword(email, password);
+  authError.textContent = '';
+  signInWithEmailPassword();
 });
 
-//запись мыла и пароля
+//кнопка регистрации
+btnRegister.addEventListener('click', event => {
+  event.preventDefault();
+  authError.textContent = '';
+  signUpWithEmailPasswoerd();
+});
+
+//кнопка выход
+btnExit.addEventListener('click', event => {
+  event.preventDefault();
+  authError.textContent = '';
+  signOut();
+});
+
+//ф-ция регистрация
 
 function signUpWithEmailPasswoerd() {
-  // var email = 'test@example.com';
-  // var password = 'hunter2';
-  // [START auth_signup_password]
+  var email = inputEmail.value;
+  var password = inputRassword.value;
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(userCredential => {
-      console.log('успешно записан');
-
+      authError.classList.add('visually-hidden');
       var user = userCredential.user;
-      // ...
+      console.log(user);
     })
     .catch(error => {
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      // ..
+      authError.textContent = errorMessage;
+      authError.classList.remove('visually-hidden');
     });
-  // [END auth_signup_password]
 }
 
 //функция для входа
 
 function signInWithEmailPassword() {
+  var email = inputEmail.value;
+  var password = inputRassword.value;
+
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then(userCredential => {
       var user = userCredential.user;
+      authError.classList.add('visually-hidden');
       console.log(email, 'email есть в базе');
-      console.log('входите');
-      homeHeader.classList.add('visually-hidden');
-      libaryHeader.classList.remove('visually-hidden');
-      console.log(user.email);
+      authError.textContent = 'registration completed successfully';
+      authError.classList.remove('visually-hidden');
       onCloseModalAuth();
     })
     .catch(error => {
       var errorCode = error.code;
       var errorMessage = error.message;
+      authError.textContent = errorMessage;
+      authError.classList.remove('visually-hidden');
       console.log(email, 'email нету в базе ,нужно зарегаться');
     });
   // [END auth_signin_password]
+}
+//отслеживание юзера
+function authStateListener() {
+  // [START auth_state_listener]
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      console.log(user);
+      btnAuth.textContent = user.email;
+      btnAuthLibrary.textContent = user.email;
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      createLibraryCardFunc(movie);
+      //снять заглушку с библиотеки
+      var uid = user.uid;
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      console.log('qqqqq');
+    }
+  });
+  // [END auth_state_listener]
+}
+
+//выход
+function signOut() {
+  // [START auth_sign_out]
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      onCloseModalAuth();
+
+      // Sign-out successful.
+    })
+    .catch(error => {
+      authError.textContent = errorMessage;
+      authError.classList.remove('visually-hidden');
+      // An error happened.
+    });
+  // [END auth_sign_out]
 }
 
 function onCloseModalAuth() {
   window.removeEventListener('keydown', onPressEscapeAuth);
   modalAuth.classList.remove('is-open');
   modalCard.innerHTML = '';
+  authError.textContent = '';
+  authError.classList.add('visually-hidden');
 }
 
 function onBackDropClickAuth(event) {
-  console.log(event);
   if (event.target === event.currentTarget) {
-    console.log(event.target);
-    console.log(event.currentTarget);
     onCloseModalAuth();
   }
 }
@@ -262,5 +323,4 @@ function onOpenModalAuth() {
   window.addEventListener('keydown', onPressEscapeAuth);
 
   overlayAuth.addEventListener('click', onBackDropClickAuth);
-  console.log(overlayAuth);
 }

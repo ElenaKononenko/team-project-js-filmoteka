@@ -1,15 +1,13 @@
-
-
 refs.error.textContent = '';
 
 refs.searchForms.addEventListener('submit', searchFilms);
 refs.backBtn.addEventListener('click', plaginationNavigation);
-refs.nextBtn.addEventListener('click', plaginationNavigation);  
+refs.nextBtn.addEventListener('click', plaginationNavigation);
 
-$(window).on("load",function(){
-    $(".loader-container").fadeOut('slow')
+$(window).on('load', function () {
+  $('.loader-container').fadeOut('slow');
 });
-  
+
 if (pageNumber === 1) {
   refs.backBtn.classList.add('btnIsHidden');
 }
@@ -50,9 +48,9 @@ function fetchFilms() {
     });
 }
 
-if (pageNumber === 1) {
-  refs.backBtn.classList.add('btnIsHidden');
-}
+// if (pageNumber === 1) {
+//   refs.backBtn.classList.add('btnIsHidden');
+// }
 //CREATE FUNCTION TO CHECK INPUT
 
 function checkInput() {
@@ -83,6 +81,7 @@ function plaginationNavigation(e) {
     checkInput();
     scroll();
   }
+
   pageNumber === 1 || pageNumber < 1
     ? refs.backBtn.classList.add('btnIsHidden')
     : refs.backBtn.classList.remove('btnIsHidden');
