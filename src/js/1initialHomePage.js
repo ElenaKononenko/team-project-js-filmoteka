@@ -70,7 +70,7 @@ function fetchPopularMoviesList() {
       return data;
     })
     .then(data => {
-      getFilm(data);
+      // getFilm(data);
       //console.log(data);
     })
     .catch(error => {
