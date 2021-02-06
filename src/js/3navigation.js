@@ -2,28 +2,14 @@ console.log('Hello from 3navigation');
 const modalCard = document.querySelector('.modalCard');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
-const filmsWatchedKeyName = 'filmsWatched';
-const filmsQueuedKeyName = 'filmsQueue';
-
-const buttonTitles = {
-  [filmsWatchedKeyName]: {
-    add: 'ADD TO WATCHED',
-    delete: 'DELETE FROM WATCHED',
-  },
-  [filmsQueuedKeyName]: {
-    add: 'ADD TO QUEUE',
-    delete: 'DELETE FROM QUEUE',
-  },
-};
 
 function activeDetailsPage(movie) {
-  //console.log(movie);
   backDropRef.classList.add('is-open');
   showDetails(movie);
-  initButton('btnModal-watched-js', movie.id, filmsWatchedKeyName);
-  initButton('btnModal-queue-js', movie.id, filmsQueuedKeyName);
   window.addEventListener('keydown', onPressEscape);
   overlayRef.addEventListener('click', onBackDropClick);
+  initModalDialogButton(moviesWatchedKeyName, 'btnModal-watched-js', movie);
+  initModalDialogButton(moviesQueuedKeyName, 'btnModal-queue-js', movie);
 }
 
 // console.log(fetchPopularMoviesList());
@@ -68,42 +54,18 @@ function showDetails({
 <button id="btnModal-watched-js"
         data-id=${movieId}
         class="btn-modal">
-  ${getButtonTitle(filmsWatchedKeyName, movieId)}
+  ${getButtonTitle(moviesWatchedKeyName, movieId)}
 </button>
 
 <button id="btnModal-queue-js"
         class="btn-modal"
         data-id=${movieId}>
-  ${getButtonTitle(filmsQueuedKeyName, movieId)}
+  ${getButtonTitle(moviesQueuedKeyName, movieId)}
 </button>
 
 </div>`;
 
   modalCard.insertAdjacentHTML('afterbegin', modalCardinfo);
-}
-
-function initButton(buttonId, movieId, key) {
-  const buttonElement = document.getElementById(buttonId);
-  const selectedClassName = 'selected';
-
-  if (!isFilmAddedToList(key, movieId)) {
-    buttonElement.classList.add(selectedClassName);
-  }
-
-  buttonElement.addEventListener('click', event => {
-    const btn = event.currentTarget;
-    const movieId = btn.dataset.id;
-
-    toggleFilmId(key, movieId);
-    btn.innerHTML = getButtonTitle(key, movieId);
-    btn.classList.toggle(selectedClassName);
-  });
-}
-
-function getButtonTitle(key, movieId) {
-  return isFilmAddedToList(key, movieId)
-    ? buttonTitles[key].delete
-    : buttonTitles[key].add;
 }
 
 //===========================================================================================================
