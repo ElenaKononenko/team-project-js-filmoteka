@@ -143,22 +143,26 @@ function cardTemplate({
                     src='${poster}'
                     alt=${filmTitle}
                     />
+                    <div class="gallery__item__picture__background">
                 <h2 class="gallery__item__title">${
                   filmTitle || filmOrigTitle
                 }</h2>
-
+                
                 <p class="gallery__item__description">
-                    ${genreString(genre)}`;
+                
+                    ${genreString(genre)}
+                   `;
   if (date.length >= 4) {
     temp += `<span class="gallery__item__description__decor">|</span>
              <span class="gallery__item__description__year">${date.substring(
                0,
                4,
-             )}</span>`;
+             )}</span>
+            `;
   }
   temp += `<span class="gallery__item__description__rating">
             ${voteAverage}</span>
-            </p> `;
+            </p>  </div>`;
   result.insertAdjacentHTML('afterbegin', temp);
   return result;
 }
