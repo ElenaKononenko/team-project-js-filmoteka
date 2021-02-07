@@ -4,6 +4,8 @@ console.log('Hello from 4filmDetailsPage');
 const moviesWatchedKeyName = 'filmsWatched';
 const moviesQueuedKeyName = 'filmsQueue';
 const selectedClassName = 'selected';
+const btnWatchedRef = document.querySelector('.button-watched');
+const btnQueueRef = document.querySelector('.button-queue');
 
 // Config file for button titles for each watched and queued movies
 const buttonTitles = {
@@ -64,7 +66,7 @@ function toggleMovieExistenceInList(movieListKey, movie) {
 function isMovieAddedToList(movieListKey, movieId) {
   const movieIds = getMoviesList(movieListKey) || {};
 
-  return movieIds[movieId] != undefined;
+  return movieIds[movieId] !== undefined;
 }
 
 function getMoviesList(movieListKey) {
@@ -92,11 +94,13 @@ function rerenderPageWithMovies(movieListKey) {
 
   if (moviesToRender.length === 0) {
     listElement.innerHTML = `
+    <div class="empty-container">
       <div class="empty-state">
         You do not have to ${
           movieListKey === moviesWatchedKeyName ? 'watched' : 'queue'
         } movies to watch
-      </div>`;
+        </div>
+        <div class="empty-img"><img src="../images/noPoster.jpg"alt="Ошибка"></div></div>`;
 
     return;
   }
