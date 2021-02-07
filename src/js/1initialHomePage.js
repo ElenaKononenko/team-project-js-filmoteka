@@ -24,15 +24,51 @@ let renderFilms = [];
 let genres = [];
 let currentPageNumber = document.getElementById('js-currentPageNumber');
 const list = document.querySelector('.galleryHome');
+const homeSection = document.querySelector('#home-section');
+const librarySection = document.querySelector('#library-section');
+const homeHeader = document.getElementById('homeHeader');
+const libaryHeader = document.getElementById('libraryHeader');
+const libraryLink = document.getElementById('libraryLink');
+const galleryHomeLink = document.getElementById('galleryHomeLink');
+const homeLink = document.getElementById('homeLink');
 const refs = {
   searchForms: document.getElementById('js-search-form'),
   backBtn: document.getElementById('js-backBtn'),
   nextBtn: document.getElementById('js-nextBtn'),
   error: document.getElementById('js-error'),
 };
-authStateListener();
+let loggedIn = false;
+const userGrantedButtons = [
+  document.querySelector('.button-queue'),
+  document.querySelector('.button-watched'),
+];
+console.log(userGrantedButtons);
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    console.log(user);
+    const userName =
+      user.email.length > 10 ? user.email.slice(0, 7) + '...' : user.email;
+    btnAuth.textContent = userName;
+    btnAuthLibrary.textContent = userName;
+    loggedIn = true;
+    userGrantedButtons.map(el => {
+      el.classList.remove('visually-hidden');
+    });
+  } else {
+    btnAuth.textContent = 'Sign in';
+    btnAuthLibrary.textContent = 'Sign in';
+    loggedIn = false;
+    userGrantedButtons.map(el => {
+      el.classList.add('visually-hidden');
+    });
+  }
+});
 fetchGenres();
-startFetch();
+
+onHomelink();
+
+homeLink.addEventListener('click', onHomelink);
+galleryHomeLink.addEventListener('click', onHomelink);
 
 function fetchGenres() {
   return fetch(
@@ -107,22 +143,26 @@ function cardTemplate({
                     src='${poster}'
                     alt=${filmTitle}
                     />
+                    <div class="gallery__item__picture__background">
                 <h2 class="gallery__item__title">${
                   filmTitle || filmOrigTitle
                 }</h2>
-
+                
                 <p class="gallery__item__description">
-                    ${genreString(genre)}`;
+                
+                    ${genreString(genre)}
+                   `;
   if (date.length >= 4) {
     temp += `<span class="gallery__item__description__decor">|</span>
              <span class="gallery__item__description__year">${date.substring(
                0,
                4,
-             )}</span>`;
+             )}</span>
+            `;
   }
   temp += `<span class="gallery__item__description__rating">
             ${voteAverage}</span>
-            </p> `;
+            </p>  </div>`;
   result.insertAdjacentHTML('afterbegin', temp);
   return result;
 }
@@ -247,6 +287,7 @@ function signInWithEmailPassword() {
       console.log(email, 'email есть в базе');
       authError.textContent = 'registration completed successfully';
       authError.classList.remove('visually-hidden');
+      loggedIn = true;
       onCloseModalAuth();
     })
     .catch(error => {
@@ -258,28 +299,6 @@ function signInWithEmailPassword() {
     });
   // [END auth_signin_password]
 }
-//отслеживание юзера
-function authStateListener() {
-  // [START auth_state_listener]
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      console.log(user);
-      btnAuth.textContent = user.email;
-      btnAuthLibrary.textContent = user.email;
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      createLibraryCardFunc(movie);
-      //снять заглушку с библиотеки
-      var uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-      console.log('qqqqq');
-    }
-  });
-  // [END auth_state_listener]
-}
 
 //выход
 function signOut() {
@@ -288,16 +307,14 @@ function signOut() {
     .auth()
     .signOut()
     .then(() => {
+      loggedIn = false;
       onCloseModalAuth();
 
       // Sign-out successful.
     })
     .catch(error => {
-      authError.textContent = errorMessage;
       authError.classList.remove('visually-hidden');
-      // An error happened.
     });
-  // [END auth_sign_out]
 }
 
 function onCloseModalAuth() {
@@ -306,6 +323,9 @@ function onCloseModalAuth() {
   modalCard.innerHTML = '';
   authError.textContent = '';
   authError.classList.add('visually-hidden');
+
+  startFetch();
+  renderAuthCheckLibrary();
 }
 
 function onBackDropClickAuth(event) {
@@ -323,4 +343,14 @@ function onOpenModalAuth() {
   window.addEventListener('keydown', onPressEscapeAuth);
 
   overlayAuth.addEventListener('click', onBackDropClickAuth);
+}
+function onHomelink() {
+  homeHeader.classList.remove('visually-hidden');
+  homeSection.classList.remove('visually-hidden');
+  librarySection.classList.add('visually-hidden');
+  libaryHeader.classList.add('visually-hidden');
+
+  libraryLink.classList.remove('current');
+  homeLink.classList.add('current');
+  startFetch();
 }
