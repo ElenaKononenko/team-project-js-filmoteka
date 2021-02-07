@@ -7,8 +7,123 @@ html {
 *::after {
   box-sizing: inherit;
 }
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), url('../fonts/roboto-medium.ttf') format('truetype');
+  /* Modern Browsers */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''), url('../fonts/roboto-bold.ttf') format('truetype');
+  /* Modern Browsers */
+}
+$primary-text-color: #000000;
+$secondary-text-color: #8c8c8c;
+$accent-color: #ff6b08;
+$primary-white-color: #f7f7f7;
+$footer-text-color: #545454;
+$white-color: #ffffff;
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: $primary-text-color;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url('../images/background/54224-mstiteli_geroi_poster_lica.jpg');
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+@media (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+  .container.modalCard {
+    // height: 700px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 76px;
+    padding-right: 76px;
+  }
+  .container.modalCard {
+    width: 600px;
+    margin: 0%;
+    padding: 0;
+    padding-bottom: 30px;
+  }
+  .container.container__modalAuth {
+    padding: 20px;
+    width: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 1024px;
+    padding-left: 71px;
+    padding-right: 71px;
+  }
+  .container.modalCard {
+    width: 800px;
+    margin: 0%;
+    padding: 0;
+    padding-bottom: 30px;
+  }
+}
+
+.section {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+@media (min-width: 320px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 120px;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
+}
+
+button.selected {
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
+  transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: white;
 }

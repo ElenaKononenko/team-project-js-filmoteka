@@ -1,0 +1,74 @@
+<header>
+  <section class="header_section" id="homeHeader">
+    <div class="container header-container">
+      <div>
+        <nav class="navigation">
+          <div>
+            <a href="../index.html" class="logo">
+              <img src="./images/film.svg" alt="Logo" class="img-logo" />
+              <span class="span_logo">Filmoteka</span>
+            </a>
+          </div>
+            <ul class="header_link list">
+              <li class="header_item head">
+                <a href="#" class="header_li current" id="homeLink">HOME</a>
+              </li>
+              <li class="header_item">
+                <a href="#" class="header_li" id="libraryLink">MY LIBRARY</a>
+              </li>
+              <li> <a class="btnAuth">Sign in</a></li>
+            </ul>
+
+        </nav>
+      </div>
+      <div class="form_input">
+        <form class="search-form" id="js-search-form">
+          <input
+            name="search"
+            type="search"
+            autocomplete="off"
+            placeholder="Поиск фильмов"
+            class="input-form"
+          />
+          <svg class="icon_vector">
+            <use href="./images/sprite.svg#icon-search"></use>
+          </svg>
+        </form>
+      </div>
+      <p id="js-error" class="error"></p>
+    </section>
+
+      <section class="header_section_library visually-hidden" id="libraryHeader">
+        <div class="container header-container">
+
+          <div>
+            <nav class="navigation">
+              <div>
+                <a href="../index.html" class="logo">
+                  <img src="./images/film.svg" alt="Logo" class="img-logo">
+                  <span class="span_logo">Filmoteka</span>
+                </a>
+              </div>
+
+              <div>
+                <ul class="header_link list">
+                  <li id="galleryHomeLink" class="header_item head"><a href="#" class="header_li">HOME</a></li>
+
+                <li class="header_item"><a href="#" class="header_li current">MY LIBRARY</a></li>
+                <li> <a class="btnAuthLibrary btnAuth">Sign in</a></li>
+
+
+                </ul>
+              </div>
+            </nav>
+          </div>
+
+          <div class="flex_button">
+            <button class="button button-watched">WATCHED</button>
+            <button class="button button-queue">QUEUE</button>
+          </div>
+
+        </div>
+
+      </section>
+  </header>
