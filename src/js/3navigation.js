@@ -63,7 +63,7 @@ function showDetails({
   ${getButtonTitle(moviesQueuedKeyName, movieId)}
 </button>
 
-</div>`;
+</>`;
 
   modalCard.insertAdjacentHTML('afterbegin', modalCardinfo);
 }

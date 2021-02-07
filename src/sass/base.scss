@@ -35,6 +35,16 @@ body {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url('../images/background/54224-mstiteli_geroi_poster_lica.jpg');
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: top left;
 }
 
 .list {
@@ -94,13 +104,20 @@ body {
 
 .section {
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 100px;
+}
+
+@media (min-width: 320px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 120px;
+  }
 }
 
 @media (min-width: 768px) {
   .section {
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 100px;
   }
 }
 
