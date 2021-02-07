@@ -5,7 +5,13 @@
 .footer_container {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0;
   color: $footer-text-color;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $primary-white-color;
 }
 
 @media (min-width: 320px) {
@@ -85,5 +91,5 @@
 
   border-bottom: 0.5px solid $footer-text-color;
   color: $footer-text-color;
-   cursor: pointer;
+  cursor: pointer;
 }
