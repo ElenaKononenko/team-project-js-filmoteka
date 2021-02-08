@@ -30,8 +30,6 @@ function fetchFilms() {
       } else {
         refs.nextBtn.classList.remove('btnIsHidden');
       }
-      console.log(data.total_pages);
-      console.log(renderFilms);
       list.innerHTML = '';
       if (renderFilms.length === 0) {
         errorContent();
@@ -43,7 +41,6 @@ function fetchFilms() {
       list.appendChild(cardsFragment);
     })
     .catch(Error => {
-      console.log(Error);
       errorContent();
     });
 }

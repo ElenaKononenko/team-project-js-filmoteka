@@ -1,4 +1,3 @@
-console.log('Hello from 4filmDetailsPage');
 
 // Local storage keys
 const moviesWatchedKeyName = 'filmsWatched';

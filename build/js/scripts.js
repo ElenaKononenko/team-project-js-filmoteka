@@ -39,10 +39,8 @@ var refs = {
 };
 var loggedIn = false;
 var userGrantedButtons = [document.querySelector('.button-queue'), document.querySelector('.button-watched')];
-console.log(userGrantedButtons);
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    console.log(user);
     var userName = user.email.length > 10 ? user.email.slice(0, 7) + '...' : user.email;
     btnAuth.textContent = userName;
     btnAuthLibrary.textContent = userName;
@@ -94,9 +92,7 @@ function fetchPopularMoviesList() {
     });
     list.appendChild(cardsFragment);
     return data;
-  }).then(function (data) {// getFilm(data);
-    //console.log(data);
-  }).catch(function (error) {
+  }).then(function (data) {}).catch(function (error) {
     errorPlug();
     refs.nextBtn.classList.add('btnIsHidden');
   });
@@ -210,7 +206,6 @@ function signUpWithEmailPasswoerd() {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function (userCredential) {
     authError.classList.add('visually-hidden');
     var user = userCredential.user;
-    console.log(user);
   }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -226,7 +221,6 @@ function signInWithEmailPassword() {
   firebase.auth().signInWithEmailAndPassword(email, password).then(function (userCredential) {
     var user = userCredential.user;
     authError.classList.add('visually-hidden');
-    console.log(email, 'email есть в базе');
     authError.textContent = 'registration completed successfully';
     authError.classList.remove('visually-hidden');
     loggedIn = true;
@@ -236,7 +230,6 @@ function signInWithEmailPassword() {
     var errorMessage = error.message;
     authError.textContent = errorMessage;
     authError.classList.remove('visually-hidden');
-    console.log(email, 'email нету в базе ,нужно зарегаться');
   }); // [END auth_signin_password]
 } //выход
 
@@ -320,8 +313,6 @@ function fetchFilms() {
       refs.nextBtn.classList.remove('btnIsHidden');
     }
 
-    console.log(data.total_pages);
-    console.log(renderFilms);
     list.innerHTML = '';
 
     if (renderFilms.length === 0) {
@@ -334,7 +325,6 @@ function fetchFilms() {
     });
     list.appendChild(cardsFragment);
   }).catch(function (Error) {
-    console.log(Error);
     errorContent();
   });
 } // if (pageNumber === 1) {
@@ -389,7 +379,6 @@ function scroll() {
 }
 "use strict";
 
-console.log('Hello from 3navigation');
 var modalCard = document.querySelector('.modalCard');
 var backDropRef = document.querySelector('.js-modal');
 var overlayRef = document.querySelector('.overlay');
@@ -401,9 +390,7 @@ function activeDetailsPage(movie) {
   overlayRef.addEventListener('click', onBackDropClick);
   initModalDialogButton(moviesWatchedKeyName, 'btnModal-watched-js', movie);
   initModalDialogButton(moviesQueuedKeyName, 'btnModal-queue-js', movie);
-} // console.log(fetchPopularMoviesList());
-// console.log(renderFilms);
-
+}
 
 function showDetails(_ref) {
   var imgPath = _ref.poster_path,
@@ -461,7 +448,6 @@ function onOpenModalTeam() {
   teamModal.classList.add('is-open');
   window.addEventListener('keydown', onPressEscapeTeam);
   teamOverlay.addEventListener('click', onBackDropClickTeam);
-  console.log(teamOverlay);
 }
 
 function onCloseModalTeam() {
@@ -486,8 +472,7 @@ var _buttonTitles;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-console.log('Hello from 4filmDetailsPage'); // Local storage keys
-
+// Local storage keys
 var moviesWatchedKeyName = 'filmsWatched';
 var moviesQueuedKeyName = 'filmsQueue';
 var selectedClassName = 'selected';
@@ -588,11 +573,9 @@ function onLibraryPageLoad() {
 }
 "use strict";
 
-console.log('Hello page5');
-var listLibrary = document.querySelector('.galleryLibrary'); // Меняет Хедер по нажатию на myLibrary
+var listLibrary = document.querySelector('.galleryLibrary'); // Change header whent tap myLibrary
 
 libraryLink.addEventListener('click', function (e) {
-  console.log(e.target);
   homeHeader.classList.add('visually-hidden');
   homeSection.classList.add('visually-hidden');
   libaryHeader.classList.remove('visually-hidden');
@@ -615,8 +598,6 @@ function renderAuthCheckLibrary() {
   if (loggedIn) {
     onLibraryPageLoad();
   } else {
-    console.log('qqqqq'); // СЮДА ВСТАВИТЬ "ЗАГЛУШКУ " НА БИБЛИОТЕКУ, КОТОРАЯ НЕ ПОКАЗЫВАЕТ ЕЕ ДО АВТОРИЗАЦИИ
-
     listLibrary.innerHTML = "\n      <div class=\"empty-state\">\n        Please login to use the library\n      </div>";
   }
 }

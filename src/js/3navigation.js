@@ -1,4 +1,3 @@
-console.log('Hello from 3navigation');
 const modalCard = document.querySelector('.modalCard');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
@@ -12,8 +11,6 @@ function activeDetailsPage(movie) {
   initModalDialogButton(moviesQueuedKeyName, 'btnModal-queue-js', movie);
 }
 
-// console.log(fetchPopularMoviesList());
-// console.log(renderFilms);
 function showDetails({
   poster_path: imgPath,
   title: filmTitle,
@@ -117,7 +114,6 @@ function onOpenModalTeam() {
   teamModal.classList.add('is-open');
   window.addEventListener('keydown', onPressEscapeTeam);
   teamOverlay.addEventListener('click', onBackDropClickTeam);
-  console.log(teamOverlay);
 }
 
 function onCloseModalTeam() {

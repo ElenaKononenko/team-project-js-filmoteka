@@ -42,10 +42,8 @@ const userGrantedButtons = [
   document.querySelector('.button-queue'),
   document.querySelector('.button-watched'),
 ];
-console.log(userGrantedButtons);
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    console.log(user);
     const userName =
       user.email.length > 10 ? user.email.slice(0, 7) + '...' : user.email;
     btnAuth.textContent = userName;
@@ -106,8 +104,6 @@ function fetchPopularMoviesList() {
       return data;
     })
     .then(data => {
-      // getFilm(data);
-      //console.log(data);
     })
     .catch(error => {
       errorPlug();
@@ -262,7 +258,6 @@ function signUpWithEmailPasswoerd() {
     .then(userCredential => {
       authError.classList.add('visually-hidden');
       var user = userCredential.user;
-      console.log(user);
     })
     .catch(error => {
       var errorCode = error.code;
@@ -284,7 +279,6 @@ function signInWithEmailPassword() {
     .then(userCredential => {
       var user = userCredential.user;
       authError.classList.add('visually-hidden');
-      console.log(email, 'email есть в базе');
       authError.textContent = 'registration completed successfully';
       authError.classList.remove('visually-hidden');
       loggedIn = true;
@@ -295,7 +289,6 @@ function signInWithEmailPassword() {
       var errorMessage = error.message;
       authError.textContent = errorMessage;
       authError.classList.remove('visually-hidden');
-      console.log(email, 'email нету в базе ,нужно зарегаться');
     });
   // [END auth_signin_password]
 }
