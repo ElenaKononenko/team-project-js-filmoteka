@@ -130,7 +130,7 @@ function cardTemplate({
 }) {
   const result = document.createElement('li');
   result.classList.add('gallery__item');
-  let poster = '../images/noPoster.jpg';
+  let poster = './images/noPoster.jpg';
   if (imgPath) {
     poster = basicPosterUrl + imgPath;
   }

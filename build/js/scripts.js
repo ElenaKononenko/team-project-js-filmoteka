@@ -115,7 +115,7 @@ function cardTemplate(_ref) {
       voteAverage = _ref.vote_average;
   var result = document.createElement('li');
   result.classList.add('gallery__item');
-  var poster = '../images/noPoster.jpg';
+  var poster = './images/noPoster.jpg';
 
   if (imgPath) {
     poster = basicPosterUrl + imgPath;
@@ -465,6 +465,14 @@ function onPressEscapeTeam(event) {
   if (event.code === 'Escape') {
     onCloseModalTeam();
   }
+}
+
+var body = document.querySelector('body');
+console.log(body);
+console.log(backDropRef);
+
+if (backDropRef.classList.contains('is-open')) {
+  body.classList.add('overflow-ishidden');
 }
 "use strict";
 

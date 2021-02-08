@@ -131,3 +131,11 @@ function onPressEscapeTeam(event) {
     onCloseModalTeam();
   }
 }
+
+const body = document.querySelector('body')
+console.log(body);
+console.log(backDropRef);
+
+if (backDropRef.classList.contains('is-open')) {
+  body.classList.add('overflow-ishidden')
+}

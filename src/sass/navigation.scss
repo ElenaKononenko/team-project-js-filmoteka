@@ -184,6 +184,7 @@
   opacity: 1;
   pointer-events: initial;
   z-index: 500;
+  overflow: auto;
 
   .overlay {
     position: absolute;
@@ -511,4 +512,8 @@ td {
   line-height: 1.33;
   outline: none;
   cursor: pointer;
+}
+
+.overflow-ishidden {
+  overflow: hidden;
 }
