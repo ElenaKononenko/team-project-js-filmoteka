@@ -40,6 +40,9 @@
   border-radius: 5px;
   background-color: rgb(231, 220, 220);
 }
+.gallery__item {
+  cursor: pointer;
+}
 
 @media screen and (min-width: 768px) {
   .galleryHome {
