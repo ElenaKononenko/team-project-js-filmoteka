@@ -199,7 +199,7 @@ function genreString(genre) {
 function errorPlug() {
   const error = `<div class="errorPlug">
  <p>Что-то пошло не так! Повторите запрос на сервер</p>
- <img src="../images/noPoster.jpg"alt="Ошибка">
+ <img src="./images/noPoster.jpg"alt="Ошибка">
  </div>`;
   list.insertAdjacentHTML('afterbegin', error);
 }

@@ -100,7 +100,7 @@ function rerenderPageWithMovies(movieListKey) {
           movieListKey === moviesWatchedKeyName ? 'watched' : 'queue'
         } movies to watch
         </div>
-        <div class="empty-img"><img src="../images/noPoster.jpg"alt="Ошибка"></div></div>`;
+        <div class="empty-img"><img src="./images/noPoster.jpg"alt="Ошибка"></div></div>`;
 
     return;
   }

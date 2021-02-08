@@ -161,7 +161,7 @@ function genreString(genre) {
 }
 
 function errorPlug() {
-  var error = "<div class=\"errorPlug\">\n <p>\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u0448\u043B\u043E \u043D\u0435 \u0442\u0430\u043A! \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u0437\u0430\u043F\u0440\u043E\u0441 \u043D\u0430 \u0441\u0435\u0440\u0432\u0435\u0440</p>\n <img src=\"../images/noPoster.jpg\"alt=\"\u041E\u0448\u0438\u0431\u043A\u0430\">\n </div>";
+  var error = "<div class=\"errorPlug\">\n <p>\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u0448\u043B\u043E \u043D\u0435 \u0442\u0430\u043A! \u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u0437\u0430\u043F\u0440\u043E\u0441 \u043D\u0430 \u0441\u0435\u0440\u0432\u0435\u0440</p>\n <img src=\"./images/noPoster.jpg\"alt=\"\u041E\u0448\u0438\u0431\u043A\u0430\">\n </div>";
   list.insertAdjacentHTML('afterbegin', error);
 }
 
@@ -571,7 +571,7 @@ function rerenderPageWithMovies(movieListKey) {
   });
 
   if (moviesToRender.length === 0) {
-    listElement.innerHTML = "\n    <div class=\"empty-container\">\n      <div class=\"empty-state\">\n        You do not have to ".concat(movieListKey === moviesWatchedKeyName ? 'watched' : 'queue', " movies to watch\n        </div>\n        <div class=\"empty-img\"><img src=\"../images/noPoster.jpg\"alt=\"\u041E\u0448\u0438\u0431\u043A\u0430\"></div></div>");
+    listElement.innerHTML = "\n    <div class=\"empty-container\">\n      <div class=\"empty-state\">\n        You do not have to ".concat(movieListKey === moviesWatchedKeyName ? 'watched' : 'queue', " movies to watch\n        </div>\n        <div class=\"empty-img\"><img src=\"./images/noPoster.jpg\"alt=\"\u041E\u0448\u0438\u0431\u043A\u0430\"></div></div>");
     return;
   }
 
