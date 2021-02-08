@@ -73,6 +73,7 @@ function onCloseModal() {
   window.removeEventListener('keydown', onPressEscape);
   backDropRef.classList.remove('is-open');
   modalCard.innerHTML = '';
+  body.classList.remove('overflow-ishidden')
 }
 
 function onBackDropClick(event) {
