@@ -496,10 +496,10 @@ var btnQueueRef = document.querySelector('.button-queue'); // Config file for bu
 
 var buttonTitles = (_buttonTitles = {}, _defineProperty(_buttonTitles, moviesWatchedKeyName, {
   add: 'ADD TO WATCHED',
-  delete: 'DELETE FROM WATCHED'
+  delete: 'DEL FROM WATCHED'
 }), _defineProperty(_buttonTitles, moviesQueuedKeyName, {
   add: 'ADD TO QUEUE',
-  delete: 'DELETE FROM QUEUE'
+  delete: 'DEL FROM QUEUE'
 }), _buttonTitles); // Set default selected Tab
 
 var selectedMovieListKey = moviesWatchedKeyName;

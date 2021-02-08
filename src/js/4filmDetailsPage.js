@@ -11,11 +11,11 @@ const btnQueueRef = document.querySelector('.button-queue');
 const buttonTitles = {
   [moviesWatchedKeyName]: {
     add: 'ADD TO WATCHED',
-    delete: 'DELETE FROM WATCHED',
+    delete: 'DEL FROM WATCHED',
   },
   [moviesQueuedKeyName]: {
     add: 'ADD TO QUEUE',
-    delete: 'DELETE FROM QUEUE',
+    delete: 'DEL FROM QUEUE',
   },
 };
 
