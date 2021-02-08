@@ -1,9 +1,11 @@
 const modalCard = document.querySelector('.modalCard');
 const backDropRef = document.querySelector('.js-modal');
 const overlayRef = document.querySelector('.overlay');
+const body = document.querySelector('body')
 
 function activeDetailsPage(movie) {
   backDropRef.classList.add('is-open');
+  body.classList.add('overflow-ishidden')
   showDetails(movie);
   window.addEventListener('keydown', onPressEscape);
   overlayRef.addEventListener('click', onBackDropClick);
@@ -132,10 +134,4 @@ function onPressEscapeTeam(event) {
   }
 }
 
-const body = document.querySelector('body')
-console.log(body);
-console.log(backDropRef);
 
-if (backDropRef.classList.contains('is-open')) {
-  body.classList.add('overflow-ishidden')
-}

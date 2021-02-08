@@ -382,9 +382,11 @@ function scroll() {
 var modalCard = document.querySelector('.modalCard');
 var backDropRef = document.querySelector('.js-modal');
 var overlayRef = document.querySelector('.overlay');
+var body = document.querySelector('body');
 
 function activeDetailsPage(movie) {
   backDropRef.classList.add('is-open');
+  body.classList.add('overflow-ishidden');
   showDetails(movie);
   window.addEventListener('keydown', onPressEscape);
   overlayRef.addEventListener('click', onBackDropClick);
@@ -465,14 +467,6 @@ function onPressEscapeTeam(event) {
   if (event.code === 'Escape') {
     onCloseModalTeam();
   }
-}
-
-var body = document.querySelector('body');
-console.log(body);
-console.log(backDropRef);
-
-if (backDropRef.classList.contains('is-open')) {
-  body.classList.add('overflow-ishidden');
 }
 "use strict";
 
