@@ -59,9 +59,23 @@
     0 10px 10px rgba(160, 152, 152, 0.25);
 }
 
+.plaginationContainer {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 90px;
+  left: 0;
+}
+
 @media (max-width: 767px) {
   .gallery__item:not(:first-child) {
     margin-top: 20px;
+  }
+  .plaginationContainer {
+    bottom: 120px;
   }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -88,14 +102,6 @@
   .gallery__item:nth-child(n + 4) {
     margin-top: 30px;
   }
-}
-
-.plaginationContainer {
-  margin-top: 40px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .currentPageNumber {
