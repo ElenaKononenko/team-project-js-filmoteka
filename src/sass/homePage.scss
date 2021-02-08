@@ -41,7 +41,9 @@
   background-color: rgb(231, 220, 220);
 }
 .gallery__item {
+  background-color: #fff;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 768px) {
@@ -51,9 +53,6 @@
   }
 }
 
-.gallery__item {
-  border-radius: 5px;
-}
 .gallery__item:hover {
   transform: scale(1.03);
   box-shadow: 0 14px 28px rgba(160, 152, 152, 0.25),
