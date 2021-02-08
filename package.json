@@ -9,7 +9,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://github.com/MaksimLisovoi/team-project-js-filmoteka.git",
+  "homepage": "https://maksimlisovoi.github.io/team-project-js-filmoteka/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luxplanjay/gulp-starter-kit.git"
