@@ -1,14 +1,12 @@
 ![Banner](./bannner.png)
 
-### :small_orange_diamond:Рабочая страничка: https://maksimlisovoi.github.io/team-project-js-filmoteka/
+## Filmoteka project
 
-### :small_orange_diamond:Исходные файлы: https://github.com/MaksimLisovoi/team-project-js-filmoteka
-
-#### :fire:Тимлид: [Maksim](https://github.com/MaksimLisovoi)
+#### :fire:Teamlead: [Maksim](https://github.com/MaksimLisovoi)
 
 #### :fire:Scrum-master: [Irina](https://github.com/Iryna1320)
 
-### Над проектом работали:
+### The project was made by:
 
 #### :small_orange_diamond: [Elena](https://github.com/ElenaKononenko)
 
