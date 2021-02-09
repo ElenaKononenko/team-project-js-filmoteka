@@ -8,16 +8,16 @@
 
 ### Над проектом работали:
 
-#### :point_right::skin-tone-2: [Elena](https://github.com/ElenaKononenko)
+#### :small_orange_diamond: [Elena](https://github.com/ElenaKononenko)
 
-#### :point_right::skin-tone-2: [Artem](https://github.com/Matviienko-Artem)
+#### :small_orange_diamond: [Artem](https://github.com/Matviienko-Artem)
 
-#### :point_right::skin-tone-2: [Olena](https://github.com/leness)
+#### :small_orange_diamond: [Olena](https://github.com/leness)
 
-#### :point_right::skin-tone-2: [Tanya](https://github.com/Tetiana-Lykhovei)
+#### :small_orange_diamond: [Tanya](https://github.com/Tetiana-Lykhovei)
 
-#### :point_right::skin-tone-2: [Eugene](https://github.com/Eugene-36)
+#### :small_orange_diamond: [Eugene](https://github.com/Eugene-36)
 
-#### :point_right::skin-tone-2: [Iryna](https://github.com/Iryna1320)
+#### :small_orange_diamond: [Iryna](https://github.com/Iryna1320)
 
-####:small_orange_diamond: Mentor: [Ivan Bekker]
+#### :small_orange_diamond: Mentor: [Ivan Bekker]
