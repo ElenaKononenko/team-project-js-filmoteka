@@ -2,9 +2,9 @@
 
 ## Filmoteka project
 
-     :fire:Teamlead: [Maksim](https://github.com/MaksimLisovoi)
+  :fire:Teamlead: [Maksim](https://github.com/MaksimLisovoi)
 
-     :fire:Scrum-master: [Irina](https://github.com/Iryna1320)
+  :fire:Scrum-master: [Irina](https://github.com/Iryna1320)
 
 ### The project was made by:
 
