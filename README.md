@@ -22,4 +22,4 @@
 
 #### :small_orange_diamond: [Iryna](https://github.com/Iryna1320)
 
-#### :small_orange_diamond: Mentor: [Ivan Bekker]
+#### :small_orange_diamond: Mentor: Ivan Bekker
