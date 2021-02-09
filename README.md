@@ -1,4 +1,4 @@
-![Banner](./banner.png)
+![Banner](./bannner.png)
 
 ### :small_orange_diamond:Рабочая страничка: https://maksimlisovoi.github.io/team-project-js-filmoteka/
 
