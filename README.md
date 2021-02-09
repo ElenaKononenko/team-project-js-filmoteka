@@ -1,3 +1,5 @@
+![Banner](./banner.png)
+
 ### :small_orange_diamond:Рабочая страничка: https://maksimlisovoi.github.io/team-project-js-filmoteka/
 
 ### :small_orange_diamond:Исходные файлы: https://github.com/MaksimLisovoi/team-project-js-filmoteka
@@ -14,7 +16,7 @@
 
 #### :small_orange_diamond: [Olena](https://github.com/leness)
 
-#### :small_orange_diamond: [Tanya](https://github.com/Tetiana-Lykhovei)
+#### :small_orange_diamond: [Tetiana](https://github.com/Tetiana-Lykhovei)
 
 #### :small_orange_diamond: [Eugene](https://github.com/Eugene-36)
 
